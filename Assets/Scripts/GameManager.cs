@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Player player;
-    public GameObject charachter;
+    public GameObject limus;
+    public GameObject fatum;
+    public GameObject golem;
     public GameObject spawn;
     public GameObject spawn2;
     public GameObject spawn3;
@@ -13,14 +15,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Respawn();
+       
+            
     }
+
 
     private void Respawn()
     {

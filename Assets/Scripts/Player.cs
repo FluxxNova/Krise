@@ -11,18 +11,22 @@ public class Player : PhysicsCollision
     [Header("Move Parameters")]
     public float speed;
     protected float axisX;
+    public float gravityMultiplier = 2f;
 
     public float jumpForce = 500f;
     public float timeToDash = 1f;
     public float dashTime = 0.2f;
-    protected float currentTime;
+    public float currentTime;
 
     private Vector3 movePos;
     public Rigidbody rb;
     public float dashForce = 10f;
     public float walljumpForceV = 300f;
     public float walljumpForceH = 500f;
+    public float walljumpTime = 0.2f;
+    public float walljumpTimer;
     public bool checkpoint1 = false;
+    public bool god = true;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +37,7 @@ public class Player : PhysicsCollision
     }
 
     float oldTime;
+    float oldTimeWallJump;
 
     // Update is called once per frame
     protected override void FixedUpdate()
@@ -42,18 +47,23 @@ public class Player : PhysicsCollision
         {
             movePos.x = axisX * speed * Time.deltaTime;
             rb.MovePosition(transform.position + movePos);
+
+            //float clampedAxisX = Mathf.Clamp(axisX, -1f, 1f);
+            //Vector3 newVelocity = Vector3.right * clampedAxisX * speed;
+            //rb.AddForce(newVelocity, ForceMode.VelocityChange);
         }
-        //float clampedAxisX = Mathf.Clamp(axisX, -1f, 1f);
-        //Vector3 newVelocity = Vector3.right * clampedAxisX * speed;
-        //rb.AddForce(newVelocity, ForceMode.VelocityChange);
+        rb.AddForce(Physics.gravity * gravityMultiplier, ForceMode.Acceleration);
 
 
         currentTime += Time.deltaTime;
+        walljumpTimer += Time.deltaTime;
 
 
         if (
             (oldTime < dashTime) &&     // Si en el fotograma anterior estaba dasheando...
-            (currentTime >= dashTime)   // ... pero en este no estoy dasheando
+            (currentTime >= dashTime) ||
+            (oldTimeWallJump < walljumpTime) &&
+            (walljumpTimer >= walljumpTime)   // ... pero en este no estoy dasheando
             )
         {
             // Acabo de terminar de dashear
@@ -62,7 +72,8 @@ public class Player : PhysicsCollision
         }
 
         oldTime = currentTime;
-
+        oldTimeWallJump = walljumpTimer;
+        
     }
 
     public void MovePlayer(float x)
@@ -86,13 +97,9 @@ public class Player : PhysicsCollision
         {
             
             if (isFacingRight == true)
-            {
                 rb.AddForce(Vector3.right * dashForce, ForceMode.VelocityChange);
-            }
             if (isFacingRight == false)
-            {
                 rb.AddForce(Vector3.right * -dashForce, ForceMode.VelocityChange);
-            }
             
             currentTime = 0;
             rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
@@ -102,18 +109,30 @@ public class Player : PhysicsCollision
     public void Jump()
     {
         
-        if (isGrounded)
+        if (isGrounded && !wallTouched)
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
-        if (wallTouched)
+
+        if (wallTouched && walljumpTimer >= walljumpTime)
         {
             rb.AddForce(Vector3.up * walljumpForceV, ForceMode.VelocityChange);
 
             if (isFacingRight == false)
+            {
+                rb.velocity = Vector3.zero;
                 rb.AddForce(Vector3.right * walljumpForceH, ForceMode.VelocityChange);
+            }
             if (isFacingRight == true)
+            {
+                rb.velocity = Vector3.zero;
                 rb.AddForce(Vector3.left * walljumpForceH, ForceMode.VelocityChange);
+            }
+            walljumpTimer = 0;
+            
         }
         
+    }
+    public void GODMODE(){
+        god = !god;
     }
 
     public override void Flip()
@@ -127,7 +146,7 @@ public class Player : PhysicsCollision
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Damage")
+        if (other.tag == "Damage" && god == false)
         {
             Debug.Log("Estas muerto wey");
             lifes--;
@@ -142,6 +161,12 @@ public class Player : PhysicsCollision
                     Debug.Log("se acabo");
             }
         }
+
+        if (other.tag == "Map limit")
+        {
+            lifes = 0;
+        }
+
         else if (other.tag == "Checkpoint")
         {
             checkpoint1 = true;
