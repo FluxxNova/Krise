@@ -8,9 +8,7 @@ TagManager:
   - Checkpoint
   - Enemy
   - Map limit
-
   - PlayerAttack
-
   layers:
   - Default
   - TransparentFX

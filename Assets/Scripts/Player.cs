@@ -10,13 +10,9 @@ public class Player : PhysicsCollision
 
     [Header("Move Parameters")]
     public float speed;
-<<<<<<< Shadertest
-    protected float axisX;
-=======
     public float speedY;
     public float axisX;
     protected float axisY; 
->>>>>>> Prototipo+Shader
     public float gravityMultiplier = 2f;
 
     public float jumpForce = 500f;
@@ -27,15 +23,7 @@ public class Player : PhysicsCollision
     private Vector3 movePos;
     public Rigidbody rb;
     public float dashForce = 10f;
-<<<<<<< Shadertest
-    public float walljumpForceV = 300f;
-    public float walljumpForceH = 500f;
-    public float walljumpTime = 0.2f;
-    public float walljumpTimer;
-=======
->>>>>>> Prototipo+Shader
     public bool checkpoint1 = false;
-    public bool god = true;
 
     public bool godmode = false;
 
@@ -49,7 +37,6 @@ public class Player : PhysicsCollision
     }
 
     float oldTime;
-    float oldTimeWallJump;
 
     protected override void FixedUpdate()
     {
@@ -64,32 +51,16 @@ public class Player : PhysicsCollision
         {
             movePos.x = axisX * speed * Time.deltaTime;
             rb.MovePosition(transform.position + movePos);
-<<<<<<< Shadertest
-
-            //float clampedAxisX = Mathf.Clamp(axisX, -1f, 1f);
-            //Vector3 newVelocity = Vector3.right * clampedAxisX * speed;
-            //rb.AddForce(newVelocity, ForceMode.VelocityChange);
-        }
-        rb.AddForce(Physics.gravity * gravityMultiplier, ForceMode.Acceleration);
-=======
->>>>>>> Prototipo+Shader
 
         }
         rb.AddForce(Physics.gravity * gravityMultiplier, ForceMode.Acceleration);
 
         currentTime += Time.deltaTime;
-        walljumpTimer += Time.deltaTime;
 
 
         if (
             (oldTime < dashTime) &&     // Si en el fotograma anterior estaba dasheando...
-<<<<<<< Shadertest
-            (currentTime >= dashTime) ||
-            (oldTimeWallJump < walljumpTime) &&
-            (walljumpTimer >= walljumpTime)   // ... pero en este no estoy dasheando
-=======
             (currentTime >= dashTime)
->>>>>>> Prototipo+Shader
             )
         {
             // Acabo de terminar de dashear
@@ -98,8 +69,7 @@ public class Player : PhysicsCollision
         }
 
         oldTime = currentTime;
-        oldTimeWallJump = walljumpTimer;
-        
+
     }
 
     public void MovePlayerX(float x)
@@ -148,32 +118,8 @@ public class Player : PhysicsCollision
         
         if (isGrounded && !wallTouched)
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
-<<<<<<< Shadertest
 
-        if (wallTouched && walljumpTimer >= walljumpTime)
-        {
-            rb.AddForce(Vector3.up * walljumpForceV, ForceMode.VelocityChange);
-
-            if (isFacingRight == false)
-            {
-                rb.velocity = Vector3.zero;
-                rb.AddForce(Vector3.right * walljumpForceH, ForceMode.VelocityChange);
-            }
-            if (isFacingRight == true)
-            {
-                rb.velocity = Vector3.zero;
-                rb.AddForce(Vector3.left * walljumpForceH, ForceMode.VelocityChange);
-            }
-            walljumpTimer = 0;
-            
-        }
-=======
-
->>>>>>> Prototipo+Shader
         
-    }
-    public void GODMODE(){
-        god = !god;
     }
 
     public override void Flip()
@@ -192,11 +138,7 @@ public class Player : PhysicsCollision
 
     private void OnTriggerEnter(Collider other)
     {
-<<<<<<< Shadertest
-        if (other.tag == "Damage" && god == false)
-=======
         if (other.tag == "Damage" && godmode == false)
->>>>>>> Prototipo+Shader
         {
             Debug.Log("-1 vida");
             lifes--;
@@ -217,11 +159,7 @@ public class Player : PhysicsCollision
             lifes = 0;
         }
 
-<<<<<<< Shadertest
-        else if (other.tag == "Checkpoint")
-=======
         if (other.tag == "Checkpoint" && checkpoint1 == false)
->>>>>>> Prototipo+Shader
         {
             checkpoint1 = true;
             Debug.Log("Checkpoint");
