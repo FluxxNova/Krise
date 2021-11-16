@@ -278,7 +278,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Cancel
+    m_Name: Pause
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -326,11 +326,13 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+
     m_Name: Godmenu
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: f10
+
     altNegativeButton: 
     altPositiveButton: joystick button 8
     gravity: 0
@@ -517,6 +519,7 @@ InputManager:
     type: 2
     axis: 5
     joyNum: 0
+
   - serializedVersion: 3
     m_Name: Enable Debug Button 1
     descriptiveName: 
@@ -533,3 +536,4 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 0
+

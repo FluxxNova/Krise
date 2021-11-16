@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject spawn2;
     public GameObject spawn3;
     public GameObject spawn4;
+    public GameObject pause;
+    public bool paused = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +23,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-            
+
+        Respawn();
+        if (Input.GetButtonDown("Pause"))
+        {
+            if (paused == false)
+            {
+                pause.SetActive(true);
+                paused = true;
+            }
+            if (paused == true)
+            {
+                pause.SetActive(false);
+                paused = false;
+            }
+        }
     }
 
 

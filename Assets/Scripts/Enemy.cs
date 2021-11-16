@@ -6,12 +6,13 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     #region Declaraciones
-    public enum EnemyState { Idle, Patrol, Chase, Explode }
+    public enum EnemyState { Idle, Patrol, Chase}
     public EnemyState state;
     private NavMeshAgent agent;
     public Transform targetTransform;
     public float speed = 10f;
     public int life = 3;
+    public Rigidbody rb;
 
     [Header("Patorl")]
     public Transform[] nodes;
@@ -40,10 +41,10 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         gameManager = FindObjectOfType<GameManager>();
-
         SetIdle();
         renderers = GetComponentsInChildren<Renderer>();
     }
@@ -67,7 +68,7 @@ public class Enemy : MonoBehaviour
                     break;
                 }
         }
-        if (targetDetected && state != EnemyState.Chase && state != EnemyState.Explode)
+        if (targetDetected && state != EnemyState.Chase )
             SetChase();
 
     }
@@ -158,7 +159,7 @@ public class Enemy : MonoBehaviour
         targetTransform = nodes[currentNode];
     }
     
-    public void GetDamage()
+    public void GetDamage()  // Muerte del enemigo
     {
         life--;
 
@@ -167,8 +168,7 @@ public class Enemy : MonoBehaviour
         if (life <= 0)
             Destroy(gameObject);
         StartCoroutine(ColorAnimation());
-        GameObject ps = Instantiate(bloodGO, transform.position, Quaternion.identity);
-        Destroy(ps, 3f);
+        
     }
 
     private void ChangeColor(Color color)
@@ -190,9 +190,11 @@ public class Enemy : MonoBehaviour
         ChangeColor(Color.white);
     }
 
-    private void OnDrawGizmos()
+    private void OnTriggerEnter(Collider other)
     {
-        Color gizmoColor = Color.red;
-        gizmoColor.a = 0.5f;
+        if (other.tag == "PlayerAttack")
+        {
+            GetDamage();
+        }
     }
 }
