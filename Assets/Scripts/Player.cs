@@ -10,19 +10,23 @@ public class Player : PhysicsCollision
 
     [Header("Move Parameters")]
     public float speed;
-    protected float axisX;
+    public float speedY;
+    public float axisX;
+    protected float axisY; 
+    public float gravityMultiplier = 2f;
 
     public float jumpForce = 500f;
     public float timeToDash = 1f;
     public float dashTime = 0.2f;
-    protected float currentTime;
+    public float currentTime;
 
     private Vector3 movePos;
     public Rigidbody rb;
     public float dashForce = 10f;
-    public float walljumpForceV = 300f;
-    public float walljumpForceH = 500f;
     public bool checkpoint1 = false;
+
+    public bool godmode = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,26 +38,29 @@ public class Player : PhysicsCollision
 
     float oldTime;
 
-    // Update is called once per frame
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+
+        
+
+
+           
+
         if (currentTime > dashTime)
         {
             movePos.x = axisX * speed * Time.deltaTime;
             rb.MovePosition(transform.position + movePos);
-        }
-        //float clampedAxisX = Mathf.Clamp(axisX, -1f, 1f);
-        //Vector3 newVelocity = Vector3.right * clampedAxisX * speed;
-        //rb.AddForce(newVelocity, ForceMode.VelocityChange);
 
+        }
+        rb.AddForce(Physics.gravity * gravityMultiplier, ForceMode.Acceleration);
 
         currentTime += Time.deltaTime;
 
 
         if (
             (oldTime < dashTime) &&     // Si en el fotograma anterior estaba dasheando...
-            (currentTime >= dashTime)   // ... pero en este no estoy dasheando
+            (currentTime >= dashTime)
             )
         {
             // Acabo de terminar de dashear
@@ -65,20 +72,31 @@ public class Player : PhysicsCollision
 
     }
 
-    public void MovePlayer(float x)
+    public void MovePlayerX(float x)
     {
         axisX = x;
         if (axisX < 0 && isFacingRight || axisX > 0 && !isFacingRight)
             Flip();
+        
 
-        if (wallTouched)
+        /*if (wallTouched)
         {
             if (isFacingRight && axisX > 0 || !isFacingRight && axisX < 0)
             {
-                //axisX = 0;
+                //axisX = 0; //Dejo de caminar hacia la pared
             }
 
+        }*/
+    }
+
+    public void MovePlayerY(float y)
+    {
+        axisY = y;
+        if (wallTouched) // Escalar mirando hacia la derecha 
+        {
+            rb.velocity = new Vector3(rb.velocity.x, axisY * speedY);
         }
+        
     }
     public void Dash()
     {
@@ -86,13 +104,9 @@ public class Player : PhysicsCollision
         {
             
             if (isFacingRight == true)
-            {
                 rb.AddForce(Vector3.right * dashForce, ForceMode.VelocityChange);
-            }
             if (isFacingRight == false)
-            {
                 rb.AddForce(Vector3.right * -dashForce, ForceMode.VelocityChange);
-            }
             
             currentTime = 0;
             rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
@@ -102,17 +116,9 @@ public class Player : PhysicsCollision
     public void Jump()
     {
         
-        if (isGrounded)
+        if (isGrounded && !wallTouched)
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
-        if (wallTouched)
-        {
-            rb.AddForce(Vector3.up * walljumpForceV, ForceMode.VelocityChange);
 
-            if (isFacingRight == false)
-                rb.AddForce(Vector3.right * walljumpForceH, ForceMode.VelocityChange);
-            if (isFacingRight == true)
-                rb.AddForce(Vector3.left * walljumpForceH, ForceMode.VelocityChange);
-        }
         
     }
 
@@ -123,13 +129,18 @@ public class Player : PhysicsCollision
         scale.x *= -1;
         transform.localScale = scale;
     }
+
+    public void ActiveGodMode()
+    {
+        godmode = !godmode;
+    }
     
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Damage")
+        if (other.tag == "Damage" && godmode == false)
         {
-            Debug.Log("Estas muerto wey");
+            Debug.Log("-1 vida");
             lifes--;
 
             if (lifes <= 0)
@@ -142,7 +153,13 @@ public class Player : PhysicsCollision
                     Debug.Log("se acabo");
             }
         }
-        else if (other.tag == "Checkpoint")
+
+        if (other.tag == "Map limit")
+        {
+            lifes = 0;
+        }
+
+        if (other.tag == "Checkpoint" && checkpoint1 == false)
         {
             checkpoint1 = true;
             Debug.Log("Checkpoint");
