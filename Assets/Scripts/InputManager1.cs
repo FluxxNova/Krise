@@ -5,7 +5,8 @@ using UnityEngine;
 public class InputManager1: MonoBehaviour
 {
     private Player player; 
-    private float axis = 0f;
+    private float axisy = 0f;
+    private float axisx = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,8 +17,11 @@ public class InputManager1: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        axis = Input.GetAxis("Horizontal");
-        player.MovePlayer(axis);
+        axisy = Input.GetAxis("Vertical");
+        player.MovePlayerY(axisy);
+
+        axisx = Input.GetAxis("Horizontal");
+        player.MovePlayerX(axisx);
 
         if (Input.GetButtonDown("Jump"))
             player.Jump();
