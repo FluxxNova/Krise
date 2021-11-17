@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager1: MonoBehaviour
+public class InputManager: MonoBehaviour
 {
     private Player player; 
     private float axisy = 0f;
