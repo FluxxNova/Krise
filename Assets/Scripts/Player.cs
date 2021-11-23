@@ -32,7 +32,6 @@ public class Player : PhysicsCollision
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         lifes = maxlifes;
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
@@ -42,11 +41,6 @@ public class Player : PhysicsCollision
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-
-        
-
-
-           
 
         if (currentTime > dashTime)
         {
@@ -147,13 +141,13 @@ public class Player : PhysicsCollision
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Damage" && godMode.isInmortal == false)
+        if (other.tag == "Damage" && godMode.isInvulnerable == false)
         {
             Debug.Log("-1 vida");
             lifes--;
         }
 
-        if (other.tag == "Map limit" && godMode.isInmortal == false)
+        if (other.tag == "Map limit" && godMode.isInvulnerable == false)
         {
             lifes = 0;
         }

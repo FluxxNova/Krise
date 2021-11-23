@@ -6,7 +6,7 @@ public class GodMode : MonoBehaviour
 {
     public Player player;
     public GameObject menu;
-    public bool isInmortal;
+    public bool isInvulnerable;
     public bool canFly;
     private bool menuActive;
 
@@ -44,11 +44,18 @@ public class GodMode : MonoBehaviour
         if (canFly == true)
         {
            player.rb.isKinematic = true;
+           player.GetComponent<Collider>().enabled = false;
         }
         else if (canFly == false)
         {
             player.rb.isKinematic = false;
+            player.GetComponent<Collider>().enabled = true;
         }
-
     }
+
+    public void Invulnerability()
+    {
+        isInvulnerable = !isInvulnerable;
+    }
+
 }
