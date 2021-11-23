@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class InputManager: MonoBehaviour
 {
-    private Player player; 
+    private Player player;
+    public GodMode godMode;
     private float axisy = 0f;
     private float axisx = 0f;
 
@@ -12,6 +13,7 @@ public class InputManager: MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
+        godMode = FindObjectOfType<GodMode>();
     }
 
     // Update is called once per frame
@@ -29,5 +31,7 @@ public class InputManager: MonoBehaviour
         if (Input.GetButtonDown("Dash"))
             player.Dash();
 
+        if (Input.GetButtonDown("GodMode"))
+            godMode.ActiveGodMenu();
     }
 }

@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     {
         if (paused == false)
         {
-
             pause.SetActive(true);
             paused = true;
         }

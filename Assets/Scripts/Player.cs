@@ -13,19 +13,20 @@ public class Player : PhysicsCollision
     public float speedY;
     public float axisX;
     protected float axisY; 
-    public float gravityMultiplier = 2f;
+    public float gravityMultiplier = 4f;
 
-    public float jumpForce = 500f;
+    public float jumpForce = 15f;
     public float timeToDash = 1f;
     public float dashTime = 0.2f;
-    public float currentTime;
+    private float currentTime;
 
     private Vector3 movePos;
     public Rigidbody rb;
+    public GodMode godMode;
     public float dashForce = 10f;
     public bool checkpoint1 = false;
 
-    public bool godmode = false;
+    private Vector3 velocidad;
 
 
     // Start is called before the first frame update
@@ -50,6 +51,8 @@ public class Player : PhysicsCollision
         if (currentTime > dashTime)
         {
             movePos.x = axisX * speed * Time.deltaTime;
+            if(godMode.canFly)
+                movePos.y = axisY * speed * Time.deltaTime;
             rb.MovePosition(transform.position + movePos);
 
         }
@@ -64,11 +67,20 @@ public class Player : PhysicsCollision
             )
         {
             // Acabo de terminar de dashear
+            /*for(dashSlow = 0; dashSlow <= timeToDash; dashSlow = currentTime)
+            {
+                rb.velocity = rb.velocity / 2;
+            }*/
             rb.velocity = Vector3.zero;
+            if (isFacingRight == true)
+                rb.AddForce(Vector3.right * dashForce/5, ForceMode.VelocityChange);
+            if (isFacingRight == false)
+                rb.AddForce(Vector3.right * -dashForce/5, ForceMode.VelocityChange);
             rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         }
 
         oldTime = currentTime;
+        velocidad = rb.velocity;
 
     }
 
@@ -100,7 +112,7 @@ public class Player : PhysicsCollision
     }
     public void Dash()
     {
-        if (currentTime >= timeToDash)
+        if (currentTime >= timeToDash && godMode.canFly == false)
         {
             
             if (isFacingRight == true)
@@ -130,31 +142,18 @@ public class Player : PhysicsCollision
         transform.localScale = scale;
     }
 
-    public void ActiveGodMode()
-    {
-        godmode = !godmode;
-    }
+    
     
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Damage" && godmode == false)
+        if (other.tag == "Damage" && godMode.isInmortal == false)
         {
             Debug.Log("-1 vida");
             lifes--;
-
-            if (lifes <= 0)
-            {
-                if (checkpoint1 == true)
-                {
-                    Debug.Log("Vuelve a intentarlo");
-                }
-                else
-                    Debug.Log("se acabo");
-            }
         }
 
-        if (other.tag == "Map limit")
+        if (other.tag == "Map limit" && godMode.isInmortal == false)
         {
             lifes = 0;
         }
@@ -162,7 +161,6 @@ public class Player : PhysicsCollision
         if (other.tag == "Checkpoint" && checkpoint1 == false)
         {
             checkpoint1 = true;
-            Debug.Log("Checkpoint");
         }
 
     }
