@@ -6,6 +6,7 @@ public class InputManager: MonoBehaviour
 {
     private Player player;
     public GodMode godMode;
+    private Fires fires;
     private float axisy = 0f;
     private float axisx = 0f;
 
@@ -14,6 +15,7 @@ public class InputManager: MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         godMode = FindObjectOfType<GodMode>();
+        fires = FindObjectOfType<Fires>();
     }
 
     // Update is called once per frame
@@ -33,5 +35,9 @@ public class InputManager: MonoBehaviour
 
         if (Input.GetButtonDown("GodMode"))
             godMode.ActiveGodMenu();
+
+        if (Input.GetButtonDown("Camperola"))
+            fires.Spawn();
+
     }
 }
