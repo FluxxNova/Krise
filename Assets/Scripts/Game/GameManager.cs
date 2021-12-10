@@ -1,28 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
     public Player player;
+    public Mixer mixer;
     public GameObject charachter;
     public GameObject spawn;
+    public GameObject spawn1;
     public GameObject spawn2;
     public GameObject spawn3;
-    public GameObject spawn4;
     public GameObject pause;
     public GameObject settings;
     public bool paused = false;
     // Start is called before the first frame update
     void Start()
     {
-
+        Object.DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Respawn();
+        
+
+        
         if (Input.GetButtonDown("Pause"))
         {
             CloseSettings();
@@ -32,7 +37,7 @@ public class GameManager : MonoBehaviour
         if(paused == true)
             Time.timeScale = 0;
         else
-            Time.timeScale = 1;
+            Time.timeScale = 1;        
     }
 
     public void Pause()
@@ -41,28 +46,29 @@ public class GameManager : MonoBehaviour
         {
             pause.SetActive(true);
             paused = true;
+            mixer.paused.TransitionTo(0);
         }
         else if (paused == true)
         {
             pause.SetActive(false);
             paused = false;
+            mixer.unpaused.TransitionTo(0);
+
         }
     }
 
 
-    private void Respawn()
+    public void Die()
     {
-        if (player.lifes <= 0)
-        {
-            player.rb.transform.position = spawn.transform.position;
-            player.lifes = player.maxlifes;
-            if (player.checkpoint1 == true)
-            {
-                player.rb.transform.position = spawn2.transform.position;
-                player.lifes = player.maxlifes; 
-            }
-        }
+        SceneManager.LoadScene("GameOver");
     }
+
+    public void Win()
+    {
+        SceneManager.LoadScene("WinScene");
+    }
+
+    
     public void OpenSettings()
     {
         settings.SetActive(true);

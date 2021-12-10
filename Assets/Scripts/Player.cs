@@ -24,6 +24,7 @@ public class Player : PhysicsCollision
     public Rigidbody rb;
     public GodMode godMode;
     public float dashForce = 10f;
+    private GameManager gameManager;
     public bool checkpoint1 = false;
 
     private Vector3 velocidad;
@@ -33,7 +34,9 @@ public class Player : PhysicsCollision
     void Start()
     {
         lifes = maxlifes;
+        gameManager = FindObjectOfType<GameManager>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+
     }
 
     float oldTime;
@@ -85,14 +88,14 @@ public class Player : PhysicsCollision
             Flip();
         
 
-        /*if (wallTouched)
+        if (wallTouched)
         {
             if (isFacingRight && axisX > 0 || !isFacingRight && axisX < 0)
             {
-                //axisX = 0; //Dejo de caminar hacia la pared
+                axisX = 0; //Dejo de caminar hacia la pared
             }
 
-        }*/
+        }
     }
 
     public void MovePlayerY(float y)
@@ -145,11 +148,24 @@ public class Player : PhysicsCollision
         {
             Debug.Log("-1 vida");
             lifes--;
+
+           
+                if (lifes <= 0)
+                {
+                    gameManager.Die();
+                }
+            
+        }
+
+        if (other.tag == "Win")
+        {
+            gameManager.Win();
         }
 
         if (other.tag == "Map limit" && godMode.isInvulnerable == false)
         {
             lifes = 0;
+            gameManager.Die();
         }
 
         if (other.tag == "Checkpoint" && checkpoint1 == false)

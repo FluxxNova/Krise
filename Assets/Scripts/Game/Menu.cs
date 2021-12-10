@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+
+    private Player player;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -21,9 +25,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Gameplay");
     }
-    public void LoadGameOverScene()
+    public void Respawn()
     {
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("Gameplay");
     }
     public void LoadSettingsScene()
     {
@@ -33,6 +37,8 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("MenuPrincipal");
     }
+
+    
 
     public void CloseGame()
     {
