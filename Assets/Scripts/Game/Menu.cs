@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-
+    [SerializeField] private float transitionTime = 1f;
     private Player player;
+    public Animator fadeAnimator;
     private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
@@ -21,28 +22,52 @@ public class Menu : MonoBehaviour
         
     }
 
+
     public void LoadGameplayScene()
     {
-        SceneManager.LoadScene("Gameplay");
+        StartCoroutine(SceneLoadGameplay());
     }
+   
+
+
     public void Respawn()
     {
         SceneManager.LoadScene("Gameplay");
     }
+
+
     public void LoadSettingsScene()
     {
         SceneManager.LoadScene("Settings");
     }
+
+
     public void LoadMenuScene()
     {
-        SceneManager.LoadScene("MenuPrincipal");
+        StartCoroutine(SceneLoadMenu());
     }
-
     
+
+
 
     public void CloseGame()
     {
         Application.Quit();
+    }
+
+    public IEnumerator SceneLoadGameplay()
+    {
+        fadeAnimator.SetTrigger("StartTransition");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene("Gameplay");
+    }
+
+
+    public IEnumerator SceneLoadMenu()
+    {
+        fadeAnimator.SetTrigger("StartTransition");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene("MenuPrincipal");
     }
 
 }

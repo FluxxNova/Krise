@@ -26,6 +26,7 @@ public class Player : PhysicsCollision
     public float dashForce = 10f;
     private GameManager gameManager;
     public bool checkpoint1 = false;
+    private AudioManager audioManager;
 
     private Vector3 velocidad;
 
@@ -36,7 +37,7 @@ public class Player : PhysicsCollision
         lifes = maxlifes;
         gameManager = FindObjectOfType<GameManager>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-
+        audioManager = GetComponentInChildren<AudioManager>();
     }
 
     float oldTime;
@@ -111,7 +112,7 @@ public class Player : PhysicsCollision
     {
         if (currentTime >= timeToDash && godMode.canFly == false)
         {
-            
+            audioManager.PlayClip(0);
             if (isFacingRight == true)
                 rb.AddForce(Vector3.right * dashForce, ForceMode.VelocityChange);
             if (isFacingRight == false)
@@ -124,11 +125,14 @@ public class Player : PhysicsCollision
 
     public void Jump()
     {
-        
-        if (isGrounded && !wallTouched)
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
 
-        
+        if (isGrounded && !wallTouched)
+        {
+            audioManager.PlayClip(2);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+        }
+
+
     }
 
     public override void Flip()
@@ -146,11 +150,12 @@ public class Player : PhysicsCollision
     {
         if (other.tag == "Damage" && godMode.isInvulnerable == false)
         {
+            audioManager.PlayClip(1);
             Debug.Log("-1 vida");
             lifes--;
 
-           
-                if (lifes <= 0)
+
+            if (lifes <= 0)
                 {
                     gameManager.Die();
                 }
