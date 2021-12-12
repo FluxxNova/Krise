@@ -41,12 +41,14 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Settings");
     }
 
-
     public void LoadMenuScene()
     {
-        StartCoroutine(SceneLoadMenu());
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MenuPrincipal");
+        gameManager.paused = false;
+
     }
-    
+
 
 
 
@@ -60,14 +62,6 @@ public class Menu : MonoBehaviour
         fadeAnimator.SetTrigger("StartTransition");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene("Gameplay");
-    }
-
-
-    public IEnumerator SceneLoadMenu()
-    {
-        fadeAnimator.SetTrigger("StartTransition");
-        yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene("MenuPrincipal");
     }
 
 }

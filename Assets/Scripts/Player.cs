@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : PhysicsCollision
 {
     [Header("Player Lifes")]
     public int maxlifes = 3;
-    public int lifes;
+    public int lifes = 3;
+    public Image lifebar;
 
     [Header("Move Parameters")]
     public float speed;
@@ -27,6 +29,7 @@ public class Player : PhysicsCollision
     private GameManager gameManager;
     public bool checkpoint1 = false;
     private AudioManager audioManager;
+    public bool isDead;
 
     private Vector3 velocidad;
 
@@ -38,6 +41,7 @@ public class Player : PhysicsCollision
         gameManager = FindObjectOfType<GameManager>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         audioManager = GetComponentInChildren<AudioManager>();
+        Cursor.visible = false;
     }
 
     float oldTime;
@@ -45,6 +49,7 @@ public class Player : PhysicsCollision
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        
 
         if (currentTime > dashTime)
         {
@@ -89,7 +94,7 @@ public class Player : PhysicsCollision
             Flip();
         
 
-        if (wallTouched)
+        if (wallTouched && godMode == false)
         {
             if (isFacingRight && axisX > 0 || !isFacingRight && axisX < 0)
             {
@@ -153,18 +158,21 @@ public class Player : PhysicsCollision
             audioManager.PlayClip(1);
             Debug.Log("-1 vida");
             lifes--;
+            lifebar.fillAmount -= 0.34f;
 
 
             if (lifes <= 0)
-                {
-                    gameManager.Die();
-                }
-            
+            {
+                gameManager.Die();
+            }
+
         }
 
         if (other.tag == "Win")
         {
+            isDead = true;
             gameManager.Win();
+            Cursor.visible = true;
         }
 
         if (other.tag == "Map limit" && godMode.isInvulnerable == false)
@@ -175,6 +183,7 @@ public class Player : PhysicsCollision
 
         if (other.tag == "Checkpoint" && checkpoint1 == false)
         {
+            audioManager.PlayClip(4);
             checkpoint1 = true;
         }
 

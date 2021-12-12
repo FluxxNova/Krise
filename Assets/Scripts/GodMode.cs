@@ -29,11 +29,13 @@ public class GodMode : MonoBehaviour
         {
             menu.SetActive(true);
             menuActive = true;
+            Cursor.visible = true;
         }
         else if (menuActive == true)
         {
             menu.SetActive(false);
             menuActive = false;
+            Cursor.visible = false;
         }
     }
 
