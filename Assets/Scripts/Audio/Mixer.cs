@@ -9,11 +9,19 @@ public class Mixer : MonoBehaviour
     public AudioMixerSnapshot unpaused;
     public AudioMixer masterMixer;
 
-    public void MusicVolumeMix(float musicLvl)
+    public void VolumeMix(float musicLvl)
     {
         masterMixer.SetFloat("Volume", musicLvl);
+
+    }
+    public void FXVolumeMix(float musicLvl)
+    {
+        masterMixer.SetFloat("FXVolume", musicLvl);
     }
 
-
+    public void MusicVolumeMix(float musicLvl)
+    {
+        masterMixer.SetFloat("MusicVolume", musicLvl);
+    }
 
 }
