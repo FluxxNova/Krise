@@ -6722,11 +6722,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paintColor: {r: 1, g: 1, b: 1, a: 0}
   radius: 7
-  strength: 1
-  hardness: 1
-  StopRadius: 1
-  MovingRadius: 1
-  speed: 1
+  strength: 0.1
+  hardness: 0.1
+  StopRadius: 0.56
+  MovingRadius: 0.55
+  speed: 0.85
 --- !u!1 &1697027935
 GameObject:
   m_ObjectHideFlags: 0
