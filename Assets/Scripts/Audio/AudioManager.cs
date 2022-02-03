@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     private Player player;
     public AudioClip[] clips;
+    public AudioSource source;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayClip(int index, float volume, float pitch)
     {
+        //source = new AudioSource();
         AudioSource source = player.GetComponent<AudioSource>();
 
         source.clip = clips[index];
