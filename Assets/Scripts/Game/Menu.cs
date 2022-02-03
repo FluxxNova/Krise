@@ -32,6 +32,7 @@ public class Menu : MonoBehaviour
 
     public void Respawn()
     {
+        //SceneManager.UnloadSceneAsync("GameOver"); //Des-cargar la escena de game over sobrepuesta anteriormente
         SceneManager.LoadScene("Gameplay");
     }
 

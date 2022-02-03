@@ -39,5 +39,8 @@ public class InputManager: MonoBehaviour
         if (Input.GetButtonDown("Camperola"))
             fires.Spawn();
 
+        if (Input.GetButtonDown("Fire1"))
+            player.Attack();
+
     }
 }

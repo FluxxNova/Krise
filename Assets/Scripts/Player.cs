@@ -25,6 +25,8 @@ public class Player : PhysicsCollision
     private Vector3 movePos;
     public Rigidbody rb;
     public GodMode godMode;
+    public GameObject attack;
+    public float attackRange;
     public float dashForce = 10f;
     private GameManager gameManager;
     public bool checkpoint1 = false;
@@ -32,6 +34,7 @@ public class Player : PhysicsCollision
     public bool isDead;
 
     private Vector3 velocidad;
+    public LayerMask enemyLayer;
 
 
     // Start is called before the first frame update
@@ -148,8 +151,20 @@ public class Player : PhysicsCollision
         transform.localScale = scale;
     }
 
-    
-    
+    public void Attack()
+    {
+       Collider[] hitEnemies = Physics.OverlapSphere(attack.transform.position, attackRange, enemyLayer);
+
+        foreach(Collider enemy in hitEnemies)
+        {
+            Debug.Log("He Hiteao");
+        }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attack.transform.position, attackRange);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
