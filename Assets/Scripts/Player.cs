@@ -154,10 +154,12 @@ public class Player : PhysicsCollision
     public void Attack()
     {
        Collider[] hitEnemies = Physics.OverlapSphere(attack.transform.position, attackRange, enemyLayer);
-
-        foreach(Collider enemy in hitEnemies)
+        audioManager.PlayClip(3);
+        foreach (Collider enemy in hitEnemies)
         {
+            enemy.transform.SendMessage("GetDamage");
             Debug.Log("He Hiteao");
+            audioManager.PlayClip(5);
         }
     }
     private void OnDrawGizmosSelected()
