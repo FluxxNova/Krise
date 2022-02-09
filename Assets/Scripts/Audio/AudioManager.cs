@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviour
 
         source.clip = clips[index];
 
+        source.pitch = Random.Range(1f, 1.5f);
+
         source.Play();
 
     }

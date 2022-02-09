@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-
         if (Input.GetButtonDown("Pause"))
         {
             if (player.isDead == false)
@@ -69,7 +68,8 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        SceneManager.LoadScene("WinScene", LoadSceneMode.Additive);
+        Cursor.visible = true;
+        SceneManager.LoadScene("WinScene");
     }
 
     

@@ -42,8 +42,8 @@ public class Fatum : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = speed;
+        //agent = GetComponent<NavMeshAgent>();
+        //agent.speed = speed;
         gameManager = FindObjectOfType<GameManager>();
         SetIdle();
         renderers = GetComponentsInChildren<Renderer>();
