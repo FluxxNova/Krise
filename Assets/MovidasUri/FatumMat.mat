@@ -60,7 +60,27 @@ Material:
         m_Texture: {fileID: 2800000, guid: 91b0e7e5c8b738f409eea572e249aac4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_03d4367c7d0642d0b6ca5c3ce55ff074_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 34629bd55f2a862459713c2ef868ade8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_21086d460b7541a6b8334e6ee08855e9_Texture_1:
+        m_Texture: {fileID: 2800000, guid: cdbe5b2845fc9db4ea8a99bd59d4971e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_373f9cfdc09b494584f472c83065524f_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 9b118fd7468634e43882c7e210201b91, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3a97a6c8a82744d6af29dd6378ef99d5_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 83ddada1240ce134b9e980b82366f489, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4cef85ce7e23448b9a56ad138175ecb6_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 9b118fd7468634e43882c7e210201b91, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_5bda59cadd75416784b03d6fbff5ced0_Texture_1:
         m_Texture: {fileID: 2800000, guid: 9b118fd7468634e43882c7e210201b91, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -70,6 +90,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_be0bb2425a4a49ba9e207d894a5462bd_Texture_1:
         m_Texture: {fileID: 2800000, guid: 83ddada1240ce134b9e980b82366f489, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_ccb90d3c9f6e4f5a9b3ef92336a48aa1_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6e78657d019a17745978c420711cbe13, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_defaa979b29346719e99ad24dbbfc16f_Texture_1:
