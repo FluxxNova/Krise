@@ -136,7 +136,7 @@ public class Titania : MonoBehaviour
 
     private void ChaseUpdate()
     {
-        agent.SetDestination(targetTransform.position);
+        /*gent.SetDestination(targetTransform.position);
 
         float distance = Vector3.Distance(transform.position, targetTransform.position);
 
@@ -145,7 +145,7 @@ public class Titania : MonoBehaviour
             targetDetected = false;
             SetIdle();
         }
-        
+        */
     }
     #endregion
 

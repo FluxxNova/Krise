@@ -1277,7 +1277,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5307339200947230495, guid: 9604c14bbfb288649a3f9af3d239c17b, type: 2}
   m_audioClip: {fileID: 8300000, guid: ae90353694d3d0047a79173b356e7b7a, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1374,7 +1374,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &554587467
 GameObject:
@@ -1520,7 +1520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744335493926690422, guid: 779421aed68794b45b0f6e21ce56ac9f, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2744335493926690422, guid: 779421aed68794b45b0f6e21ce56ac9f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1624,7 +1624,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5307339200947230495, guid: 9604c14bbfb288649a3f9af3d239c17b, type: 2}
   m_audioClip: {fileID: 8300000, guid: be540db76aa712d42975eaada2448a41, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1721,7 +1721,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &617434953 stripped
 Animator:
