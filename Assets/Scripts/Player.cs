@@ -30,7 +30,7 @@ public class Player : PhysicsCollision
     public float dashForce = 10f;
     private GameManager gameManager;
     public bool checkpoint1 = false;
-    private AudioManager audioManager;
+    public AudioManager audioManager;
     public bool isDead;
 
     private Vector3 velocidad;

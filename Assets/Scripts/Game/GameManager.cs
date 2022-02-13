@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
             mixer.paused.TransitionTo(0);
             Time.timeScale = 0;
             Cursor.visible = true;
+            player.audioManager.PlayClip(6);
         }
         else if (paused == true)
         {
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
             mixer.unpaused.TransitionTo(0);
             Time.timeScale = 1;
             Cursor.visible = false;
+            player.audioManager.PlayClip(7);
         }
     }
 
