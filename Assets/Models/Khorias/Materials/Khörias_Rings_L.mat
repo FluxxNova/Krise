@@ -8,18 +8,45 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: "Kh\xF6rias_Rings_L"
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: a517bca67ba31294daaa021a51f5335b, type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_3b89bd75477843ecb7be32e319e259cf:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_6238f93cfc76438abadfd12af2d08155:
+        m_Texture: {fileID: 2800000, guid: dbd6ee590370e334fa3a09a8067d9e49, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_9de6ebb4ad9b4b88a25763af48f34f86:
+        m_Texture: {fileID: 2800000, guid: 79d730cad5a86ee46a57b1656fee09d5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_b9109d9fcf384b3d83c246962d624515:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_d3bd15961b5a4a698b8d496551cb403d:
+        m_Texture: {fileID: 2800000, guid: aa78962042cfdbc4597251d72886c46f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_d6341584c36845c19f8983360904124e:
+        m_Texture: {fileID: 2800000, guid: acd9f3cf3ffa71a4f9ec7eec5d6a3cd6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_fa603b2052854394bae7d156a751663c:
+        m_Texture: {fileID: 2800000, guid: 00e5d72f5c674434cb438caaab7b6337, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 00e5d72f5c674434cb438caaab7b6337, type: 3}
         m_Scale: {x: 1, y: 1}

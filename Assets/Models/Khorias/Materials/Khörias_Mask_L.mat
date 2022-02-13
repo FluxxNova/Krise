@@ -21,18 +21,45 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: "Kh\xF6rias_Mask_L"
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: a517bca67ba31294daaa021a51f5335b, type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_3b89bd75477843ecb7be32e319e259cf:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_6238f93cfc76438abadfd12af2d08155:
+        m_Texture: {fileID: 2800000, guid: b91e8938225453d4397d16107d8b7cf0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_9de6ebb4ad9b4b88a25763af48f34f86:
+        m_Texture: {fileID: 2800000, guid: e070e4b619fe0a846a8aba0ccbbced3d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_b9109d9fcf384b3d83c246962d624515:
+        m_Texture: {fileID: 2800000, guid: e070e4b619fe0a846a8aba0ccbbced3d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_d3bd15961b5a4a698b8d496551cb403d:
+        m_Texture: {fileID: 2800000, guid: 96a0cdd162d3bd9409df6a58f5845aac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_d6341584c36845c19f8983360904124e:
+        m_Texture: {fileID: 2800000, guid: 6d62c5cd28e88574e8354795db2a8683, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_fa603b2052854394bae7d156a751663c:
+        m_Texture: {fileID: 2800000, guid: 7bf1f100b4b6a3d48a621182501383cc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 7bf1f100b4b6a3d48a621182501383cc, type: 3}
         m_Scale: {x: 1, y: 1}
