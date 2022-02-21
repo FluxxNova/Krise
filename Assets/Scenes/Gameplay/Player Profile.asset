@@ -1,6 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4039109952820039226
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Player Profile
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 3695935124231209009}
+--- !u!114 &3695935124231209009
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16,15 +30,15 @@ MonoBehaviour:
   m_AdvancedMode: 0
   threshold:
     m_OverrideState: 1
-    m_Value: 1099.1
+    m_Value: 1e+12
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 53.57
+    m_Value: 408.05
     min: 0
   scatter:
     m_OverrideState: 0
-    m_Value: 0.75
+    m_Value: 1
     min: 0
     max: 1
   clamp:
@@ -39,7 +53,7 @@ MonoBehaviour:
     showEyeDropper: 1
   highQualityFiltering:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   skipIterations:
     m_OverrideState: 0
     m_Value: 1
@@ -52,17 +66,3 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
     min: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: "Kh\xF6rias_Low Profile"
-  m_EditorClassIdentifier: 
-  components:
-  - {fileID: -4039109952820039226}
