@@ -13,6 +13,14 @@ public class OptionsMenu : MonoBehaviour
     static string resolution_PPrefsTag = "Resolution";
     static string fullscreen_PPrefsTag = "FullScreen";
 
+    [SerializeField] private Slider brightnessSlider = null;
+    [SerializeField] private float defaultBrightness = 1;
+
+    public Slider slider;
+    public Light sceneLight;
+
+    private float _brightnessLevel;
+
     [SerializeField] AudioMixer myMixer;
 
     [SerializeField] TMP_Dropdown resolution;
@@ -58,8 +66,16 @@ public class OptionsMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        sceneLight.intensity = slider.value * 3;
     }
+
+    public void SetBrightness(float brightness)
+    {
+        _brightnessLevel = brightness;
+
+        PlayerPrefs.SetFloat("masterBrightness", _brightnessLevel);
+    }
+    
 
     public void OnSliMusicValue(float newValue) {
         PlayerPrefs.SetFloat(music_PPrefsTag, newValue);
