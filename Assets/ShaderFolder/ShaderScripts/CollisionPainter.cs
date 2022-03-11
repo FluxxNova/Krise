@@ -8,12 +8,18 @@ public class CollisionPainter : MonoBehaviour
     public float hardness = 1;
     public float StopRadius = 1;
     public float MovingRadius = 1;
+    private CharacterController _controller;
 
     public float speed = 1;
-    
+    private void Start()
+    {
+        _controller = GetComponent<CharacterController>();
+        _controller.detectCollisions = true;
+    }
 
     private void OnCollisionStay(Collision other)
     {
+        Debug.Log("Estoy pintando");
         Paintable p = other.collider.GetComponent<Paintable>();
 
         

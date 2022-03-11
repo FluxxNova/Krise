@@ -67,7 +67,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (_controller.isGrounded == true)
         {
-            Debug.Log("Player is grounded.");
+            
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 _yVelocity = _jumpHeight;
