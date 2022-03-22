@@ -9,7 +9,6 @@ public class InputManager: MonoBehaviour
     private Fires fires;
     private float axisy = 0f;
     private float axisx = 0f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -43,4 +42,5 @@ public class InputManager: MonoBehaviour
             player.Attack();
 
     }
+
 }
