@@ -26,14 +26,14 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Pause"))
+        /*if (Input.GetButtonDown("Pause"))
         {
             if (player.isDead == false)
             {
                 CloseSettings();
                 Pause();
             }
-        }
+        }*/
 
     }
 
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
             paused = false;
             mixer.unpaused.TransitionTo(0);
             Time.timeScale = 1;
-            Cursor.visible = false;
+            //Cursor.visible = false;
             player.audioManager.PlayClip(7);
         }
     }

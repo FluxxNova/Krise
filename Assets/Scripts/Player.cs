@@ -16,6 +16,7 @@ public class Player : PhysicsCollision
     public float axisX;
     protected float axisY; 
     public float gravityMultiplier = 4f;
+    public bool isGroundeed;
 
     public float jumpForce = 15f;
     public float timeToDash = 1f;
@@ -32,6 +33,7 @@ public class Player : PhysicsCollision
     public bool checkpoint1 = false;
     public AudioManager audioManager;
     public bool isDead;
+
 
     private Vector3 velocidad;
     public LayerMask enemyLayer;
@@ -52,7 +54,7 @@ public class Player : PhysicsCollision
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        
+        isGroundeed = isGrounded;
 
         if (currentTime > dashTime)
         {

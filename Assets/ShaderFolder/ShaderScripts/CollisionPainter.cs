@@ -19,7 +19,7 @@ public class CollisionPainter : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        Debug.Log("Estoy pintando");
+        //Debug.Log("Estoy pintando");
         Paintable p = other.collider.GetComponent<Paintable>();
 
         

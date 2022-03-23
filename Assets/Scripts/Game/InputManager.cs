@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager: MonoBehaviour
 {
@@ -9,7 +10,18 @@ public class InputManager: MonoBehaviour
     private Fires fires;
     private float axisy = 0f;
     private float axisx = 0f;
+    Playercontrols controls;
+    Vector2 move;
+
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        controls = new Playercontrols();
+        controls.Gameplay.MoveKeyboard.performed += ctx => move = ctx.ReadValue<Vector2>();
+        controls.Gameplay.MoveKeyboard.canceled += ctx => move = Vector2.zero;
+    }
+
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -20,13 +32,14 @@ public class InputManager: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        axisy = Input.GetAxis("Vertical");
-        player.MovePlayerY(axisy);
+        move.x = axisx;
+        move.y = axisy;
 
-        axisx = Input.GetAxis("Horizontal");
+
+        player.MovePlayerY(axisy);
         player.MovePlayerX(axisx);
 
-        if (Input.GetButtonDown("Jump"))
+        /*if (Input.GetButtonDown("Jump"))
             player.Jump();
 
         if (Input.GetButtonDown("Dash"))
@@ -39,7 +52,7 @@ public class InputManager: MonoBehaviour
             fires.Spawn();
 
         if (Input.GetButtonDown("Fire1"))
-            player.Attack();
+            player.Attack();*/
 
     }
 
