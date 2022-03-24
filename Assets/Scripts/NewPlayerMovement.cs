@@ -7,7 +7,7 @@ public class NewPlayerMovement : MonoBehaviour
 {
     Playercontrols controls;
     private Rigidbody rb;
-    public float speed = 15f;
+    public float speed = 1f;
     public Vector2 inputVector;
 
     private void Awake()
@@ -23,7 +23,7 @@ public class NewPlayerMovement : MonoBehaviour
     {
         Debug.Log(obj);
         Vector2 inputVector2 = obj.ReadValue<Vector2>();
-        float speed2 = 5f;
+        float speed2 = 0.5f;
         rb.AddForce(new Vector3(inputVector2.x, 0f, 0f) * speed, ForceMode.Force);
     }
     // Start is called before the first frame update
