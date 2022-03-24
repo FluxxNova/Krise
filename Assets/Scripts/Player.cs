@@ -78,7 +78,7 @@ public class Player : PhysicsCollision
             (currentTime >= dashTime)
             )
         {
-            
+           
             rb.velocity = Vector3.zero;
             if (isFacingRight == true)
                 rb.AddForce(Vector3.right * dashForce/5, ForceMode.VelocityChange);
@@ -178,7 +178,6 @@ public class Player : PhysicsCollision
             Debug.Log("-1 vida");
             lifes--;
             lifebar.fillAmount -= 0.34f;
-
 
             if (lifes <= 0)
             {
