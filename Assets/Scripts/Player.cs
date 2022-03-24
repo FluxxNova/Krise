@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class Player : PhysicsCollision
 {
-    [Header("Player Lifes")]
+    [Header("HP and WINLOSE")]
     public int maxlifes = 3;
     public int lifes = 3;
     public Image lifebar;
+    public bool isDead;
+    public bool checkpoint1 = false;
 
     [Header("Move Parameters")]
     public float speed;
@@ -16,30 +18,33 @@ public class Player : PhysicsCollision
     public float axisX;
     protected float axisY; 
     public float gravityMultiplier = 4f;
-    public bool isGroundeed;
-
     public float jumpForce = 15f;
+    private Vector3 movePos;
+
+    [Header("Dash Parameters")]
     public float timeToDash = 1f;
     public float dashTime = 0.2f;
-    private float currentTime;
+    public float dashForce = 10f;
 
-    private Vector3 movePos;
-    public Rigidbody rb;
-    public GodMode godMode;
+    [Header("Time Parameters")]
+    private float currentTime;
+    float oldTime;
+
+    [Header("attack Parameters")]
     public GameObject attack;
     public float attackRange;
-    public float dashForce = 10f;
+
+    [Header("Controller declaration")]
+    public Rigidbody rb;
+    public GodMode godMode;
     private GameManager gameManager;
-    public bool checkpoint1 = false;
     public AudioManager audioManager;
-    public bool isDead;
-
-
-    private Vector3 velocidad;
     public LayerMask enemyLayer;
 
+    [Header("Debug Parameters")]
+    public Vector3 velocidad;
+    
 
-    // Start is called before the first frame update
     void Start()
     {
         lifes = maxlifes;
@@ -49,12 +54,11 @@ public class Player : PhysicsCollision
         Cursor.visible = false;
     }
 
-    float oldTime;
+    
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        isGroundeed = isGrounded;
 
         if (currentTime > dashTime)
         {
@@ -74,11 +78,7 @@ public class Player : PhysicsCollision
             (currentTime >= dashTime)
             )
         {
-            // Acabo de terminar de dashear
-            /*for(dashSlow = 0; dashSlow <= timeToDash; dashSlow = currentTime)
-            {
-                rb.velocity = rb.velocity / 2;
-            }*/
+            
             rb.velocity = Vector3.zero;
             if (isFacingRight == true)
                 rb.AddForce(Vector3.right * dashForce/5, ForceMode.VelocityChange);
