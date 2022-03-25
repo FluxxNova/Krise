@@ -4345,7 +4345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.06085693, y: 0, z: 0, w: 0.9981465}
-  m_LocalPosition: {x: -61, y: -51.99, z: -11.32}
+  m_LocalPosition: {x: -61, y: -52.65, z: -11.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 498219010}
@@ -7072,6 +7072,7 @@ GameObject:
   - component: {fileID: 1692638036}
   - component: {fileID: 1692638041}
   - component: {fileID: 1692638042}
+  - component: {fileID: 1692638044}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -7148,7 +7149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692638030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.2, y: -53.59, z: -3.32}
+  m_LocalPosition: {x: -61.2, y: -54.25, z: -3.32}
   m_LocalScale: {x: 1.5495, y: 1.5495, z: 1.5495}
   m_Children:
   - {fileID: 438539037}
@@ -7425,25 +7426,25 @@ MonoBehaviour:
   maxlifes: 3
   lifes: 3
   lifebar: {fileID: 1700591164}
+  isDead: 0
+  checkpoint1: 0
   speed: 5
   speedY: 0
   axisX: 0
   gravityMultiplier: 4
-  isGroundeed: 0
   jumpForce: 15
   timeToDash: 1
   dashTime: 0.2
-  rb: {fileID: 1692638031}
-  godMode: {fileID: 134957490}
+  dashForce: 10
   attack: {fileID: 1333664459}
   attackRange: 0
-  dashForce: 10
-  checkpoint1: 0
+  rb: {fileID: 1692638031}
+  godMode: {fileID: 134957490}
   audioManager: {fileID: 0}
-  isDead: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0
+  velocidad: {x: 0, y: 0, z: 0}
 --- !u!136 &1692638042
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7471,7 +7472,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  jumpForce: 10
   inputVector: {x: 0, y: 0}
+--- !u!114 &1692638044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692638030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e7c34815919a0074083ea267b253d87e, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1697027935
 GameObject:
   m_ObjectHideFlags: 0
