@@ -7060,19 +7060,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1692638035}
-  - component: {fileID: 1692638040}
+  - component: {fileID: 1692638043}
+  - component: {fileID: 1692638041}
+  - component: {fileID: 1692638034}
   - component: {fileID: 1692638031}
+  - component: {fileID: 1692638042}
+  - component: {fileID: 1692638044}
+  - component: {fileID: 1692638033}
+  - component: {fileID: 1692638040}
   - component: {fileID: 1692638037}
   - component: {fileID: 1692638038}
   - component: {fileID: 1692638039}
-  - component: {fileID: 1692638033}
-  - component: {fileID: 1692638034}
-  - component: {fileID: 1692638032}
-  - component: {fileID: 1692638043}
-  - component: {fileID: 1692638036}
-  - component: {fileID: 1692638041}
-  - component: {fileID: 1692638042}
-  - component: {fileID: 1692638044}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -7094,27 +7092,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 2
---- !u!114 &1692638032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692638030}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d81f1b776a473048b15a2964ef5a285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DashDuration: 0.5
-  Velocity: {x: 0, y: 0, z: 0}
-  _gravity: 0.9
-  _playerSpeed: 20
-  _jumpHeight: 25
-  _yVelocity: 0
-  Dashforce: 100
 --- !u!33 &1692638033
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7132,7 +7111,7 @@ CharacterController:
   m_GameObject: {fileID: 1692638030}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.3
   m_Radius: 0.2
@@ -7161,18 +7140,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1692638036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692638030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aecbd99e3d236740956e65648383caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1692638037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7412,7 +7379,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692638030}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c3cf6c1ab1963c4a8da8da613518e82, type: 3}
   m_Name: 
@@ -7471,9 +7438,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0724c0376bb20654faa0c9d732614bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 10
+  speed: 13
+  jumpForce: 3
+  dashForce: 50
   inputVector: {x: 0, y: 0}
+  controller: {fileID: 0}
+  jump: 0
+  dash: 0
+  currentTime: 0
+  gravity: -30
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 128
+  isGrounded: 0
+  isFacingLeft: 0
 --- !u!114 &1692638044
 MonoBehaviour:
   m_ObjectHideFlags: 0

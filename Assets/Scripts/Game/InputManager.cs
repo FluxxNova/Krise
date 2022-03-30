@@ -18,8 +18,6 @@ public class InputManager: MonoBehaviour
     private void Awake()
     {
         controls = new Playercontrols();
-        controls.Gameplay.MoveKeyboard.performed += ctx => move = ctx.ReadValue<Vector2>();
-        controls.Gameplay.MoveKeyboard.canceled += ctx => move = Vector2.zero;
     }
 
     void Start()

@@ -23,17 +23,9 @@
                 },
                 {
                     "name": "Dash",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "84ec33d9-11a2-4772-922e-9d8b93e30987",
                     "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Move Keyboard",
-                    "type": "Value",
-                    "id": "1d2985ae-1a67-4230-8837-0e836eb3cc90",
-                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -44,7 +36,7 @@
                     "id": "19b7341e-2f1f-4e27-9b24-88da3ada4635",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.5)",
                     "groups": "PS4",
                     "action": "Move",
                     "isComposite": false,
@@ -130,68 +122,24 @@
                 {
                     "name": "",
                     "id": "b4ff1ad5-1983-48bf-aadc-cc03213d46d2",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press",
                     "processors": "",
-                    "groups": "",
+                    "groups": "PS4",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "dddc11b9-c4a9-4135-b478-0f6b978c3213",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "1a3edf60-791a-4d1c-b2b9-c87d4f0cf233",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Move Keyboard",
-                    "isComposite": true,
+                    "groups": "Keyboard + Mouse",
+                    "action": "Dash",
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "e7cefa85-b647-4a30-9762-d1120a06589c",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Keyboard",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "50003160-a9eb-49b9-9b52-3db598e0b076",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Keyboard",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "345ea78e-d4e5-48a2-b2cf-3639be13b485",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Keyboard",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "b389622e-0986-473f-8ff5-b57e36e09cbe",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Keyboard",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         }
