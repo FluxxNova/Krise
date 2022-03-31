@@ -2,36 +2,70 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class NewPlayerMovement : MonoBehaviour
 {
-    Playercontrols controls;
-    private Rigidbody rb;
+    [Header("Definitions")]
+    [SerializeField] CharacterController controller;
+    public Playercontrols controls;
+    Animator animator;
+    [SerializeField] LayerMask groundMask;
+    [SerializeField] LayerMask wallMask;
+    [SerializeField] LayerMask enemyLayer;
+
+    [Header("HP and WINLOSE")]
+    public int maxlifes = 3;
+    public int lifes = 3;
+    public Image lifebar;
+    public bool isDead;
+    public bool checkpoint1 = false;
+
+    [Header("Move Parameters")]
+    public Vector2 inputVector;
     public float speed = 0.7f;
     public float jumpForce;
     public float dashForce;
-    public Vector2 inputVector;
-    Animator animator;
-    private bool Moving;
-
     Vector2 dashMovement;
-
-
-    [SerializeField] CharacterController controller;
     Vector2 horizontalInput;
+    Vector2 verticalVelocity = Vector2.zero;
+    [SerializeField] float gravity = -30f; // -9.81
+    protected float rayDistance = 1f;
+    protected float rayOffset = 0.5f;
+    private Vector3 lookDirection = Vector3.right;
+
+    [Header("Booleans")]
+    public bool isGrounded;
+    public bool wallTouched;
+    public bool isFacingLeft;
     public bool jump;
     public bool dash;
+    private bool Moving;
+
+    [Header("Time Parameters")]
+    private float currentTime;
     float dashTime = 0.2f;
     float timeToDash = 1f;
-    public float currentTime;
-    [SerializeField] float gravity = -30f; // -9.81
-    Vector3 verticalVelocity = Vector3.zero;
-    [SerializeField] LayerMask groundMask;
-    [SerializeField] LayerMask wallMask;
-    public bool isGrounded;
-    public bool isFacingLeft;
+    private float damageCD = 2f;
+    public float damageTime;
 
+    [Header("Attack Parameters")]
+    public GameObject attack;
+    public float attackRange;
+
+    [Header("Controller declaration")]
+    private Rigidbody rb;
+    public GodMode godMode;
+    public GameManager gameManager;
+    public AudioManager audioManager;
+    void Start()
+    {
+        lifes = maxlifes;
+        gameManager = FindObjectOfType<GameManager>();
+        audioManager = GetComponentInChildren<AudioManager>();
+        //Cursor.visible = false;
+    }
 
     private void Awake()
     {
@@ -45,28 +79,27 @@ public class NewPlayerMovement : MonoBehaviour
         controls.Gameplay.Move.performed += Movement_performed;
         controls.Gameplay.Jump.performed += OnJump;
         controls.Gameplay.Dash.performed += OnDash;
+        controls.Gameplay.Pause.performed += OnPause;
+        controls.Gameplay.Attack.performed += OnAttack;
 
         controls.Gameplay.Move.canceled += ctx => { inputVector = Vector2.zero; Moving = false; };
         controls.Gameplay.Move.performed += ctx => Moving = true;
     }
 
 
-    //Vector2 inputVector;
     private void Movement_performed(InputAction.CallbackContext obj)
     {
-        //Debug.Log(obj);
         inputVector = obj.ReadValue<Vector2>();
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     private void FixedUpdate()
     {
+        WallChecker();
         currentTime += Time.deltaTime;
-        isGrounded = Physics.CheckSphere(transform.position, 1f, groundMask);
+        damageTime += Time.deltaTime;
+        isGrounded = Physics.CheckSphere(transform.position, 0.2f, groundMask);
         if (isGrounded)
         {
             rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
@@ -75,8 +108,10 @@ public class NewPlayerMovement : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         }
+        if (wallTouched)
+        {
 
-        //rb.velocity = (new Vector3(inputVector.x, 0f, 0f) * speed);
+        }
 
         Vector2 horizontalVelocity = (transform.right * inputVector.x + transform.forward * inputVector.y) * speed;
         controller.Move(horizontalVelocity * Time.deltaTime);
@@ -90,7 +125,7 @@ public class NewPlayerMovement : MonoBehaviour
             animator.SetBool("isMoving", false);
         }
 
-        
+
 
         if (inputVector.x > 0f && isFacingLeft)
         {
@@ -101,7 +136,7 @@ public class NewPlayerMovement : MonoBehaviour
             Flip();
         }
 
-        
+
         if (currentTime >= dashTime)
         {
             dashMovement.x = 0f;
@@ -109,9 +144,30 @@ public class NewPlayerMovement : MonoBehaviour
             dash = false;
         }
 
-        verticalVelocity.y += gravity * Time.deltaTime;
+        if (wallTouched)
+        {
+            verticalVelocity = (transform.up * inputVector.y + transform.forward * inputVector.y) * speed;
+        }
+        else
+        {
+            verticalVelocity.y += gravity * Time.deltaTime;
+        }
+
         controller.Move(verticalVelocity * Time.deltaTime);
         controller.Move(dashMovement * Time.deltaTime);
+    }
+    void OnAttack(InputAction.CallbackContext isAttacking)
+    {
+
+        Collider[] hitEnemies = Physics.OverlapSphere(attack.transform.position, attackRange, enemyLayer);
+        audioManager.PlayClip(3);
+        foreach (Collider enemy in hitEnemies)
+        {
+            enemy.transform.SendMessage("GetDamage");
+            Debug.Log("He Hiteao");
+            audioManager.PlayClip(5);
+        }
+        
     }
 
 
@@ -128,6 +184,12 @@ public class NewPlayerMovement : MonoBehaviour
             jump = false;
         }
     }
+    public void OnPause(InputAction.CallbackContext obj)
+    {
+        gameManager.CloseSettings();
+        gameManager.Pause();
+    }
+    
     void OnDash(InputAction.CallbackContext isDashing)
     {
         dash = true;
@@ -147,13 +209,17 @@ public class NewPlayerMovement : MonoBehaviour
         controls.Gameplay.Move.Enable();
         controls.Gameplay.Jump.Enable();
         controls.Gameplay.Dash.Enable();
+        controls.Gameplay.Pause.Enable();
+        controls.Gameplay.Attack.Enable();
     }
 
     private void OnDisable()
     {
         controls.Gameplay.Move.Disable();
         controls.Gameplay.Jump.Disable();
+        controls.Gameplay.Pause.Disable();
         controls.Gameplay.Dash.Disable();
+        controls.Gameplay.Attack.Disable();
     }
 
     void Flip()
@@ -161,7 +227,75 @@ public class NewPlayerMovement : MonoBehaviour
         Vector3 currentScale = gameObject.transform.localScale;
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
-
+        lookDirection *= -1;
         isFacingLeft = !isFacingLeft;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == "Damage" && godMode.isInvulnerable == false)
+        {
+            if (damageTime > damageCD)
+            {
+                //audioManager.PlayClip(1);
+                Debug.Log("-1 vida");
+                lifes--;
+                lifebar.fillAmount -= 0.34f;
+                damageTime = 0f;
+            }
+
+            if (lifes <= 0)
+            {
+                gameManager.Die();
+            }
+
+        }
+
+        if (other.tag == "Win")
+        {
+            isDead = true;
+            gameManager.Win();
+            Cursor.visible = true;
+        }
+
+        if (other.tag == "Map limit" && godMode.isInvulnerable == false)
+        {
+            lifes = 0;
+            gameManager.Die();
+        }
+
+        if (other.tag == "Checkpoint" && checkpoint1 == false)
+        {
+            audioManager.PlayClip(4);
+            checkpoint1 = true;
+        }
+    }
+    private void WallChecker()
+    {
+        wallTouched = false;
+
+        Vector3 rayPos = Vector3.zero;
+        int mult = 0;
+
+        for (int i = 0; i < 3; i++)
+        {
+            RaycastHit hit = new RaycastHit();
+
+            if (Physics.Raycast(transform.position + rayPos, lookDirection, out hit, 1, wallMask))
+            {
+                wallTouched = true;
+                break;
+            }
+
+            if (mult <= 0)
+            {
+                mult *= -1;
+                mult++;
+            }
+            else mult *= -1;
+
+            rayPos.y = mult * rayOffset;
+        }
+    }
 }
+

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private Player player;
+    private NewPlayerMovement player;
     public AudioClip[] clips;
     public AudioSource source;
 
     private void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = FindObjectOfType<NewPlayerMovement>();
     }
 
     public void PlayClip(int index)

@@ -21,6 +21,8 @@ public class Player : PhysicsCollision
     public float jumpForce = 15f;
     private Vector3 movePos;
 
+
+
     [Header("Dash Parameters")]
     public float timeToDash = 1f;
     public float dashTime = 0.2f;
@@ -174,7 +176,7 @@ public class Player : PhysicsCollision
     {
         if (other.tag == "Damage" && godMode.isInvulnerable == false)
         {
-            audioManager.PlayClip(1);
+            //audioManager.PlayClip(1);
             Debug.Log("-1 vida");
             lifes--;
             lifebar.fillAmount -= 0.34f;
@@ -201,7 +203,7 @@ public class Player : PhysicsCollision
 
         if (other.tag == "Checkpoint" && checkpoint1 == false)
         {
-            audioManager.PlayClip(4);
+            //audioManager.PlayClip(4);
             checkpoint1 = true;
         }
 

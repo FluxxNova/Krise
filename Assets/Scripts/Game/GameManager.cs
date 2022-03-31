@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject pause;
     public GameObject settings;
     public bool paused = false;
+    NewPlayerMovement newPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,15 +26,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        /*if (Input.GetButtonDown("Pause"))
-        {
-            if (player.isDead == false)
-            {
-                CloseSettings();
-                Pause();
-            }
-        }*/
 
     }
 
@@ -46,7 +38,7 @@ public class GameManager : MonoBehaviour
             mixer.paused.TransitionTo(0);
             Time.timeScale = 0;
             Cursor.visible = true;
-            player.audioManager.PlayClip(6);
+            newPlayer.audioManager.PlayClip(6);
         }
         else if (paused == true)
         {
@@ -65,7 +57,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         SceneManager.LoadScene("GameOver");
         //SceneManager.LoadScene("GameOver", LoadSceneMode.Additive); //Sobreponer la escena de gameover encima del gameplay para luego quitarla
-        player.isDead = true;
+        //player.isDead = true;
     }
 
     public void Win()
@@ -85,4 +77,5 @@ public class GameManager : MonoBehaviour
         settings.SetActive(false);
         pause.SetActive(true);
     }
+
 }

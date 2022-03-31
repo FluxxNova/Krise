@@ -8,7 +8,7 @@ public class Fatum : MonoBehaviour
     #region Declaraciones
     public enum EnemyState { Idle, Patrol, Chase}
     public EnemyState state;
-    private NavMeshAgent agent;
+    //private NavMeshAgent agent;
     public Transform targetTransform;
     public float speed = 10f;
     public int life = 3;
@@ -92,7 +92,7 @@ public class Fatum : MonoBehaviour
     private void SetIdle()
     {
         state = EnemyState.Idle;
-        agent.isStopped = true;
+        //agent.isStopped = true;
         radius = radiusIdle;
 
     }
@@ -100,14 +100,14 @@ public class Fatum : MonoBehaviour
     private void SetPatrol()
     {
         state = EnemyState.Patrol;
-        agent.isStopped = false;
-        agent.SetDestination(targetTransform.position);
+        //agent.isStopped = false;
+        //agent.SetDestination(targetTransform.position);
     }
 
     private void SetChase()
     {
         state = EnemyState.Chase;
-        agent.isStopped = false;
+        //agent.isStopped = false;
         radius = radiusChase;
         targetTransform = playerTransform;
     }
@@ -128,15 +128,15 @@ public class Fatum : MonoBehaviour
 
     private void PatrolUpdate()
     {
-        if (agent.remainingDistance <= 0.5f)
+        /*if (agent.remainingDistance <= 0.5f)
         {
             SetIdle();
-        }
+        }*/
     }
 
     private void ChaseUpdate()
     {
-        agent.SetDestination(targetTransform.position);
+        //agent.SetDestination(targetTransform.position);
 
         float distance = Vector3.Distance(transform.position, targetTransform.position);
 
@@ -156,7 +156,7 @@ public class Fatum : MonoBehaviour
         if (currentNode >= nodes.Length)
             currentNode = 0;
 
-        targetTransform = nodes[currentNode];
+        //targetTransform = nodes[currentNode];
     }
     
     public void GetDamage()  // Muerte del enemigo
