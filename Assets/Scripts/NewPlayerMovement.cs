@@ -30,13 +30,14 @@ public class NewPlayerMovement : MonoBehaviour
     Vector2 dashMovement;
     Vector2 horizontalInput;
     Vector2 verticalVelocity = Vector2.zero;
-    [SerializeField] float gravity = -30f; // -9.81
+    [SerializeField] float gravity = -20f; // -9.81
     protected float rayDistance = 1f;
     protected float rayOffset = 0.5f;
     private Vector3 lookDirection = Vector3.right;
+    [SerializeField] float terminalVerticalVelocity = -5f;
 
     [Header("Booleans")]
-    public bool isGrounded;
+    public bool jumping;
     public bool wallTouched;
     public bool isFacingLeft;
     public bool jump;
@@ -99,8 +100,8 @@ public class NewPlayerMovement : MonoBehaviour
         WallChecker();
         currentTime += Time.deltaTime;
         damageTime += Time.deltaTime;
-        isGrounded = Physics.CheckSphere(transform.position, 0.2f, groundMask);
-        if (isGrounded)
+        //isGrounded = Physics.CheckSphere(transform.position, 0.2f, groundMask);
+        if (controller.isGrounded)
         {
             rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         }
@@ -114,7 +115,10 @@ public class NewPlayerMovement : MonoBehaviour
         }
 
         Vector2 horizontalVelocity = (transform.right * inputVector.x + transform.forward * inputVector.y) * speed;
-        controller.Move(horizontalVelocity * Time.deltaTime);
+
+        Vector2 compositeMovement = Vector2.zero;
+
+        compositeMovement += horizontalVelocity * Time.deltaTime;
 
         if (Moving == true)
         {
@@ -125,8 +129,6 @@ public class NewPlayerMovement : MonoBehaviour
             animator.SetBool("isMoving", false);
         }
 
-
-
         if (inputVector.x > 0f && isFacingLeft)
         {
             Flip();
@@ -136,6 +138,7 @@ public class NewPlayerMovement : MonoBehaviour
             Flip();
         }
 
+        animator.SetBool("isJumping", !controller.isGrounded);
 
         if (currentTime >= dashTime)
         {
@@ -151,10 +154,16 @@ public class NewPlayerMovement : MonoBehaviour
         else
         {
             verticalVelocity.y += gravity * Time.deltaTime;
+            if (verticalVelocity.y < terminalVerticalVelocity)
+            {
+                verticalVelocity.y = terminalVerticalVelocity;
+            }
         }
 
-        controller.Move(verticalVelocity * Time.deltaTime);
-        controller.Move(dashMovement * Time.deltaTime);
+        compositeMovement += verticalVelocity * Time.deltaTime;
+        compositeMovement += dashMovement * Time.deltaTime;
+
+        controller.Move(compositeMovement);
     }
     void OnAttack(InputAction.CallbackContext isAttacking)
     {
@@ -174,13 +183,11 @@ public class NewPlayerMovement : MonoBehaviour
     void OnJump(InputAction.CallbackContext isJumping)
     {
         jump = true;
-        if (jump)
+        if (jump && controller.isGrounded)
         {
-            if (isGrounded)
-            {
-                verticalVelocity.y = Mathf.Sqrt(-2f * jumpForce * gravity);
-                Debug.Log("Salto");
-            }
+            //verticalVelocity.y = Mathf.Sqrt(-2f * jumpForce * gravity);
+            verticalVelocity.y = jumpForce;
+            Debug.Log("Salto");
             jump = false;
         }
     }

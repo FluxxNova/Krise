@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject spawn2;
     public GameObject pause;
     public GameObject settings;
+    public GameObject hud;
     public bool paused = false;
     NewPlayerMovement newPlayer;
     // Start is called before the first frame update
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         if (paused == false)
         {
             pause.SetActive(true);
+            hud.SetActive(false);
             paused = true;
             mixer.paused.TransitionTo(0);
             Time.timeScale = 0;
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
         else if (paused == true)
         {
             pause.SetActive(false);
+            hud.SetActive(true);
             paused = false;
             mixer.unpaused.TransitionTo(0);
             Time.timeScale = 1;

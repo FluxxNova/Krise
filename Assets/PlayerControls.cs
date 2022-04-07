@@ -194,22 +194,22 @@ public class @Playercontrols : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b316bc2b-2b65-4f33-84d1-cc0d04640371"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""552087df-f3bd-468c-b1d5-0880bddf3238"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
+                    ""groups"": ""PS4"",
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""552087df-f3bd-468c-b1d5-0880bddf3238"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""id"": ""b316bc2b-2b65-4f33-84d1-cc0d04640371"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PS4"",
+                    ""groups"": ""Keyboard + Mouse"",
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
