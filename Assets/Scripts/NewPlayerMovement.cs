@@ -43,6 +43,7 @@ public class NewPlayerMovement : MonoBehaviour
     public bool jump;
     public bool dash;
     private bool Moving;
+    public bool fly;
 
     [Header("Time Parameters")]
     private float currentTime;
@@ -103,22 +104,17 @@ public class NewPlayerMovement : MonoBehaviour
         //isGrounded = Physics.CheckSphere(transform.position, 0.2f, groundMask);
         if (controller.isGrounded)
         {
-            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+            //rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         }
         else
         {
             rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-        }
-        if (wallTouched)
-        {
-
         }
 
         Vector2 horizontalVelocity = (transform.right * inputVector.x + transform.forward * inputVector.y) * speed;
 
         Vector2 compositeMovement = Vector2.zero;
 
-        compositeMovement += horizontalVelocity * Time.deltaTime;
 
         if (Moving == true)
         {
@@ -160,8 +156,20 @@ public class NewPlayerMovement : MonoBehaviour
             }
         }
 
+
+        if (fly)
+        {
+            wallTouched = true;
+            verticalVelocity = (transform.up * inputVector.y + transform.forward * inputVector.y) * speed;
+        }
+        else
+        {
+            gravity = -30;
+        }
+
         compositeMovement += verticalVelocity * Time.deltaTime;
         compositeMovement += dashMovement * Time.deltaTime;
+        compositeMovement += horizontalVelocity * Time.deltaTime;
 
         controller.Move(compositeMovement);
     }
