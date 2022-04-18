@@ -34,8 +34,8 @@ public class InputManager: MonoBehaviour
         move.y = axisy;
 
 
-        player.MovePlayerY(axisy);
-        player.MovePlayerX(axisx);
+        //player.MovePlayerY(axisy);
+        //player.MovePlayerX(axisx);
 
         /*if (Input.GetButtonDown("Jump"))
             player.Jump();

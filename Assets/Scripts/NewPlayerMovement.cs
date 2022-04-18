@@ -178,13 +178,13 @@ public class NewPlayerMovement : MonoBehaviour
 
         Collider[] hitEnemies = Physics.OverlapSphere(attack.transform.position, attackRange, enemyLayer);
         audioManager.PlayClip(3);
+        animator.SetTrigger("Attack");
         foreach (Collider enemy in hitEnemies)
         {
             enemy.transform.SendMessage("GetDamage");
             Debug.Log("He Hiteao");
             audioManager.PlayClip(5);
         }
-        
     }
 
 
