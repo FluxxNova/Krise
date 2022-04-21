@@ -3,7 +3,42 @@ guid: c3e4c855b7d5bf64fbd1c09396d4fa7f
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cara
+    second: {fileID: 2100000, guid: 3f2bce9e942ac6f4eacbf31c3a1ab9ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cuerpo
+    second: {fileID: 2100000, guid: 398be6e53d1bcb844b2be944a1c0aa01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hombros
+    second: {fileID: 2100000, guid: 0bf732a42bd2a5f4493cebf07dfdd2f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Manos
+    second: {fileID: 2100000, guid: 13c854ca8e9f4764ea1f622c4cb878e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Orbe
+    second: {fileID: 2100000, guid: 1c5df6d554cf21f49855367f10ecfb1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piernas
+    second: {fileID: 2100000, guid: cc7ff20541ec5df4fa8515599d3c93c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pies
+    second: {fileID: 2100000, guid: b52433ddacb9eca4199bb15181004d8d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

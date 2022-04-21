@@ -6,21 +6,11 @@ using UnityEngine.AI;
 public class Titania : MonoBehaviour
 {
     #region Declaraciones
-    public enum EnemyState { Idle, Patrol, Chase}
-    public EnemyState state;
-    private NavMeshAgent agent;
     public Transform targetTransform;
     public float speed = 10f;
     public int life = 3;
     public Rigidbody rb;
 
-    [Header("Patorl")]
-    public Transform[] nodes;
-    private int currentNode;
-
-    [Header("Idle")]
-    public float idleTime = 2f;
-    private float currentTime;
 
     [Header("Chase")]
     public float radiusIdle = 5;
@@ -36,47 +26,21 @@ public class Titania : MonoBehaviour
     private Renderer[] renderers;
     private MaterialPropertyBlock materialProperty;
     public GameObject bloodGO;
+    public GameObject fatum;
+    public GameObject limus;
+    public GameObject golem;
 
     #endregion
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //agent = GetComponent<NavMeshAgent>();
-        //agent.speed = speed;
         gameManager = FindObjectOfType<GameManager>();
-        SetIdle();
         renderers = GetComponentsInChildren<Renderer>();
-    }
-    void Update()
-    {
-        switch (state)
-        {
-            case EnemyState.Idle:
-                {
-                    IdleUpdate();
-                    break;
-                }
-            case EnemyState.Patrol:
-                {
-                    PatrolUpdate();
-                    break;
-                }
-            case EnemyState.Chase:
-                {
-                    ChaseUpdate();
-                    break;
-                }
-        }
-        if (targetDetected && state != EnemyState.Chase )
-            SetChase();
-
     }
 
     private void FixedUpdate()
     {
-        if (targetDetected)
-            return;
 
         int collisions = Physics.OverlapSphereNonAlloc(transform.position, radius, hits, playerLayer);
 
@@ -85,78 +49,13 @@ public class Titania : MonoBehaviour
             targetDetected = true;
             playerTransform = hits[0].transform;
         }
-    }
 
-    #region Sets 
-
-    private void SetIdle()
-    {
-        state = EnemyState.Idle;
-        agent.isStopped = true;
-        radius = radiusIdle;
-
-    }
-
-    private void SetPatrol()
-    {
-        state = EnemyState.Patrol;
-        agent.isStopped = false;
-        agent.SetDestination(targetTransform.position);
-    }
-
-    private void SetChase()
-    {
-        state = EnemyState.Chase;
-        agent.isStopped = false;
-        radius = radiusChase;
-        targetTransform = playerTransform;
-    }
-    #endregion
-
-    #region Updates
-    private void IdleUpdate()
-    {
-        currentTime += Time.deltaTime;
-
-        if (currentTime >= idleTime)
+        if (targetDetected)
         {
-            currentTime = 0;
-            GoNextNode();
-            SetPatrol();
-        }
-    }
-
-    private void PatrolUpdate()
-    {
-        if (agent.remainingDistance <= 0.5f)
-        {
-            SetIdle();
-        }
-    }
-
-    private void ChaseUpdate()
-    {
-        /*gent.SetDestination(targetTransform.position);
-
-        float distance = Vector3.Distance(transform.position, targetTransform.position);
-
-        if (distance >= radius)
-        {
+            for (int i = 0; i < 1; i++)
+                StartCoroutine(SpawnEnemies());
             targetDetected = false;
-            SetIdle();
         }
-        */
-    }
-    #endregion
-
-    private void GoNextNode()
-    {
-        currentNode++;
-
-        if (currentNode >= nodes.Length)
-            currentNode = 0;
-
-        targetTransform = nodes[currentNode];
     }
     
     public void GetDamage()  // Muerte del enemigo
@@ -181,6 +80,18 @@ public class Titania : MonoBehaviour
         {
             renderers[i].SetPropertyBlock(materialProperty);
         }
+    }
+
+    
+    private IEnumerator SpawnEnemies()
+    {
+        yield return new WaitForSeconds(2f);
+        Instantiate(golem, this.transform.position + new Vector3(-3, 1), Quaternion.Euler(0, -90, 0));
+        yield return new WaitForSeconds(2f);
+        Instantiate(limus, this.transform.position + new Vector3(-10, 1), Quaternion.Euler(270, 270, 0));
+        yield return new WaitForSeconds(2f);
+        Instantiate(fatum, this.transform.position + new Vector3(-15, 2.7f), Quaternion.Euler(0, -90, 0));
+        
     }
 
     private IEnumerator ColorAnimation()

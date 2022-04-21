@@ -61,6 +61,7 @@ public class NewPlayerMovement : MonoBehaviour
     public GodMode godMode;
     public GameManager gameManager;
     public AudioManager audioManager;
+    public GameObject golem;
     void Start()
     {
         lifes = maxlifes;
@@ -195,7 +196,6 @@ public class NewPlayerMovement : MonoBehaviour
         {
             //verticalVelocity.y = Mathf.Sqrt(-2f * jumpForce * gravity);
             verticalVelocity.y = jumpForce;
-            Debug.Log("Salto");
             jump = false;
         }
     }
