@@ -57,7 +57,6 @@ public class NewPlayerMovement : MonoBehaviour
     public float attackRange;
 
     [Header("Controller declaration")]
-    private Rigidbody rb;
     public GodMode godMode;
     public GameManager gameManager;
     public AudioManager audioManager;
@@ -70,13 +69,13 @@ public class NewPlayerMovement : MonoBehaviour
         audioManager = GetComponentInChildren<AudioManager>();
         //Cursor.visible = false;
     }
+    float originalZ;
 
     private void Awake()
     {
         Playercontrols inputAction = new Playercontrols();
-        rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
-
+        originalZ = transform.position.z;
         controller = GetComponent<CharacterController>();
 
         controls = new Playercontrols();
@@ -103,20 +102,13 @@ public class NewPlayerMovement : MonoBehaviour
         WallChecker();
         currentTime += Time.deltaTime;
         damageTime += Time.deltaTime;
-        transform.position.z = -6.5f;
         //isGrounded = Physics.CheckSphere(transform.position, 0.2f, groundMask);
-        if (controller.isGrounded)
-        {
-            //rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-        }
-        else
-        {
-            rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-        }
+        controller.transform.position = new Vector3(transform.position.x, transform.position.y, -6.5f);
 
         Vector2 horizontalVelocity = (transform.right * inputVector.x + transform.forward * inputVector.y) * speed;
 
         Vector2 compositeMovement = Vector2.zero;
+
 
 
         if (Moving == true)
@@ -175,6 +167,10 @@ public class NewPlayerMovement : MonoBehaviour
         compositeMovement += horizontalVelocity * Time.deltaTime;
 
         controller.Move(compositeMovement);
+
+        Vector3 newPosition = transform.position;
+        newPosition.z = originalZ;
+        transform.position = newPosition;
     }
     void OnAttack(InputAction.CallbackContext isAttacking)
     {
