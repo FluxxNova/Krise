@@ -29,7 +29,6 @@ public class Titania : MonoBehaviour
     public GameObject fatum;
     public GameObject limus;
     public GameObject golem;
-    public float timeToSpawn;
 
     #endregion
 
@@ -42,7 +41,7 @@ public class Titania : MonoBehaviour
 
     private void FixedUpdate()
     {
-        timeToSpawn += Time.deltaTime;
+
         int collisions = Physics.OverlapSphereNonAlloc(transform.position, radius, hits, playerLayer);
 
         if (collisions > 0)
@@ -55,14 +54,8 @@ public class Titania : MonoBehaviour
         {
             for (int i = 0; i < 1; i++)
                 StartCoroutine(SpawnEnemies());
-            //targetDetected = false;
-            if (timeToSpawn >= 5)
-            {
-                timeToSpawn = 0f;
-                targetDetected = false;
-            }
+            targetDetected = false;
         }
-
     }
     
     public void GetDamage()  // Muerte del enemigo
@@ -92,16 +85,13 @@ public class Titania : MonoBehaviour
     
     private IEnumerator SpawnEnemies()
     {
-        if (timeToSpawn >= 5f)
-        {
-            yield return new WaitForSeconds(2f);
-            Instantiate(golem, this.transform.position + new Vector3(-3, 1), Quaternion.Euler(0, -90, 0));
-            yield return new WaitForSeconds(2f);
-            Instantiate(limus, this.transform.position + new Vector3(-10, 1), Quaternion.Euler(270, 270, 0));
-            yield return new WaitForSeconds(2f);
-            Instantiate(fatum, this.transform.position + new Vector3(-15, 2.7f), Quaternion.Euler(0, -90, 0));
-        }
-
+        yield return new WaitForSeconds(2f);
+        Instantiate(golem, this.transform.position + new Vector3(-3, 1), Quaternion.Euler(0, -90, 0));
+        yield return new WaitForSeconds(2f);
+        Instantiate(limus, this.transform.position + new Vector3(-10, 1), Quaternion.Euler(270, 270, 0));
+        yield return new WaitForSeconds(2f);
+        Instantiate(fatum, this.transform.position + new Vector3(-15, 2.7f), Quaternion.Euler(0, -90, 0));
+        
     }
 
     private IEnumerator ColorAnimation()
@@ -110,12 +100,12 @@ public class Titania : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         ChangeColor(Color.white);
     }
-    private void OnTriggerEnter(Collider collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-
-        targetDetected = true;
-        Debug.Log("eleelle");
-        targetDetected = false;
+        if (other.tag == "PlayerAttack")
+        {
+            GetDamage();
+        }
     }
-
 }

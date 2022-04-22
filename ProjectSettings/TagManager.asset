@@ -9,7 +9,6 @@ TagManager:
   - Enemy
   - Map limit
   - Win
-  - TargetDetect
   layers:
   - Default
   - TransparentFX
