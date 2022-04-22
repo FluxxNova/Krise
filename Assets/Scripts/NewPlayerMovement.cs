@@ -103,6 +103,7 @@ public class NewPlayerMovement : MonoBehaviour
         WallChecker();
         currentTime += Time.deltaTime;
         damageTime += Time.deltaTime;
+        transform.position.z = -6.5f;
         //isGrounded = Physics.CheckSphere(transform.position, 0.2f, groundMask);
         if (controller.isGrounded)
         {
