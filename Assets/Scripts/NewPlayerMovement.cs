@@ -62,6 +62,7 @@ public class NewPlayerMovement : MonoBehaviour
     public GameManager gameManager;
     public AudioManager audioManager;
     public GameObject golem;
+    public Titania titania;
     void Start()
     {
         lifes = maxlifes;
@@ -283,6 +284,11 @@ public class NewPlayerMovement : MonoBehaviour
         {
             audioManager.PlayClip(4);
             checkpoint1 = true;
+        }
+
+        if (other.tag == "TargetDetect")
+        {
+            titania.targetDetected = true;
         }
     }
     private void WallChecker()
