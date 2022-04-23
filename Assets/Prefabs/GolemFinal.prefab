@@ -27,7 +27,6 @@ Transform:
   m_LocalPosition: {x: 4.11, y: -51.85, z: -6.9}
   m_LocalScale: {x: 0.19618738, y: 0.19618738, z: 0.19618738}
   m_Children:
-  - {fileID: 7672573238780022386}
   - {fileID: 8262818246138744778}
   - {fileID: 7979045345623331056}
   m_Father: {fileID: 0}
@@ -581,15 +580,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8135118201593889848}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0.04933834, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: -0.70710695, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 0.0020342665, y: 0.0071793976, z: 0.0367911}
+  m_LocalScale: {x: 3.567377, y: 3.5673769, z: 3.5673766}
   m_Children:
   - {fileID: 7018655931524167790}
   - {fileID: 2462414449746272802}
   - {fileID: 2399267913069410245}
   - {fileID: 944623761809301134}
-  m_Father: {fileID: 1642303029183848172}
+  m_Father: {fileID: 8262818246138744778}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8473894187713541722
@@ -665,6 +664,7 @@ GameObject:
   - component: {fileID: 1909158942162148693}
   - component: {fileID: 1243020547429116215}
   - component: {fileID: 1243020547429116216}
+  - component: {fileID: 7884249170966684786}
   m_Layer: 11
   m_Name: Body_Retopo
   m_TagString: Damage
@@ -682,9 +682,10 @@ Transform:
   m_LocalRotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0.057024147, y: -0.15191174, z: -1.0313208}
   m_LocalScale: {x: 28.0318, y: 28.0318, z: 28.0318}
-  m_Children: []
+  m_Children:
+  - {fileID: 7672573238780022386}
   m_Father: {fileID: 1642303029183848172}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1909158942162148693
 SkinnedMeshRenderer:
@@ -788,8 +789,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   targetTransform: {fileID: 0}
-  speed: 10
-  life: 3
+  speed: 0.2
+  life: 10
   rb: {fileID: 0}
   nodes: []
   idleTime: 2
@@ -797,10 +798,32 @@ MonoBehaviour:
   radiusChase: 10
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   targetDetected: 0
   gameManager: {fileID: 0}
   bloodGO: {fileID: 0}
+--- !u!195 &7884249170966684786
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578028081849129164}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.35
+  m_Speed: 0.2
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 1000
+  m_StoppingDistance: 4
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.19
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8786226499743008289
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +885,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1642303029183848172}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &3481704579102003602
 Light:
