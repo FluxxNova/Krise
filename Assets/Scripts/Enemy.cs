@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     private Renderer[] renderers;
     private MaterialPropertyBlock materialProperty;
     public GameObject bloodGO;
+    private Animator animator;
 
     #endregion
 
@@ -47,6 +48,7 @@ public class Enemy : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         SetIdle();
         renderers = GetComponentsInChildren<Renderer>();
+        animator = GetComponentInChildren<Animator>();
     }
     void Update()
     {
@@ -179,5 +181,15 @@ public class Enemy : MonoBehaviour
         {
             GetDamage();
         }
+    }
+    public void Attack()
+    {
+        StartCoroutine(StartAttack());
+    }
+
+    public IEnumerator StartAttack()
+    {
+        animator.SetTrigger("attack");
+        yield return new WaitForSeconds(5f);
     }
 }

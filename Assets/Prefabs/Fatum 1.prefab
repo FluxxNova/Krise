@@ -623,7 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5137611604032815146}
   - component: {fileID: 6768247830052052697}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: FatumDetect
   m_Icon: {fileID: 0}

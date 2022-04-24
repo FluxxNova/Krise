@@ -51,6 +51,7 @@ MonoBehaviour:
   rigidBody: {fileID: 866723784726267536}
   angleChangingSpeed: 150
   movementSpeed: 20
+  Player: {fileID: 0}
 --- !u!50 &866723784726267536
 Rigidbody2D:
   serializedVersion: 4

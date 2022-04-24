@@ -11,6 +11,7 @@ TagManager:
   - Win
   - TargetDetect
   - FatumDetect
+  - GolemDetect
   layers:
   - Default
   - TransparentFX

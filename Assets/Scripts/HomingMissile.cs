@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class HomingMissile : MonoBehaviour
 {
-   
-  
     public Transform target;
     public Rigidbody2D rigidBody;
     public float angleChangingSpeed;

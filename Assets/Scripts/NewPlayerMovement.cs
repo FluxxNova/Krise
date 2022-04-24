@@ -62,6 +62,7 @@ public class NewPlayerMovement : MonoBehaviour
     public AudioManager audioManager;
     public Titania titania;
     public Fatum fatum;
+    public Enemy golem;
     void Start()
     {
         fatum = FindObjectOfType<Fatum>();
@@ -325,6 +326,10 @@ public class NewPlayerMovement : MonoBehaviour
         if (other.tag == "FatumDetect")
         {
             fatum.Fire();
+        }
+        if (other.tag == "FatumDetect")
+        {
+            golem.Attack();
         }
     }
 }
