@@ -62,7 +62,7 @@ public class Menu : MonoBehaviour
     {
         fadeAnimator.SetTrigger("StartTransition");
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene("Delta Gameplay");
+        SceneManager.LoadScene("Gameplay");
     }
 
 }

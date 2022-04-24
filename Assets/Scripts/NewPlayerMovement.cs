@@ -191,6 +191,7 @@ public class NewPlayerMovement : MonoBehaviour
         jump = true;
         if (jump && controller.isGrounded)
         {
+            audioManager.PlayClip(2);
             //verticalVelocity.y = Mathf.Sqrt(-2f * jumpForce * gravity);
             verticalVelocity.y = jumpForce;
             jump = false;
@@ -200,8 +201,9 @@ public class NewPlayerMovement : MonoBehaviour
     {
         gameManager.CloseSettings();
         gameManager.Pause();
+        audioManager.PlayClip(6);
     }
-    
+
     void OnDash(InputAction.CallbackContext isDashing)
     {
         dash = true;
@@ -212,7 +214,6 @@ public class NewPlayerMovement : MonoBehaviour
             if (!isFacingLeft)
                 dashMovement.x = 1 * dashForce;
             currentTime = 0f;
-            Debug.Log("Dasheo");
         }
     }
 
@@ -249,7 +250,7 @@ public class NewPlayerMovement : MonoBehaviour
         {
             if (damageTime > damageCD)
             {
-                //audioManager.PlayClip(1);
+                audioManager.PlayClip(1);
                 Debug.Log("-1 vida");
                 lifes--;
                 lifebar.fillAmount -= 0.34f;

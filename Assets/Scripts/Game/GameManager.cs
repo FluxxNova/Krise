@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Object.DontDestroyOnLoad(this.gameObject);        
+        //Object.DontDestroyOnLoad(this.gameObject);        
     }
 
     // Update is called once per frame
@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
             mixer.paused.TransitionTo(0);
             Time.timeScale = 0;
             Cursor.visible = true;
-            newPlayer.audioManager.PlayClip(6);
         }
         else if (paused == true)
         {
@@ -50,7 +49,6 @@ public class GameManager : MonoBehaviour
             mixer.unpaused.TransitionTo(0);
             Time.timeScale = 1;
             //Cursor.visible = false;
-            player.audioManager.PlayClip(7);
         }
     }
 
@@ -72,6 +70,7 @@ public class GameManager : MonoBehaviour
     
     public void OpenSettings()
     {
+        player.audioManager.PlayClip(2);
         settings.SetActive(true);
         pause.SetActive(false);
     }
