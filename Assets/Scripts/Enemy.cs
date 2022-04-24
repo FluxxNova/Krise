@@ -97,13 +97,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void SetPatrol()
-    {
-        state = EnemyState.Patrol;
-        agent.isStopped = false;
-        agent.SetDestination(targetTransform.position);
-    }
-
     private void SetChase()
     {
         state = EnemyState.Chase;
@@ -121,8 +114,6 @@ public class Enemy : MonoBehaviour
         if (currentTime >= idleTime)
         {
             currentTime = 0;
-            GoNextNode();
-            SetPatrol();
         }
     }
 
@@ -149,15 +140,7 @@ public class Enemy : MonoBehaviour
     }
     #endregion
 
-    private void GoNextNode()
-    {
-        currentNode++;
 
-        if (currentNode >= nodes.Length)
-            currentNode = 0;
-
-        targetTransform = nodes[currentNode];
-    }
     
     public void GetDamage()  // Muerte del enemigo
     {

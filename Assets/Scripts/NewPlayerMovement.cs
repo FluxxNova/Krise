@@ -60,7 +60,6 @@ public class NewPlayerMovement : MonoBehaviour
     public GodMode godMode;
     public GameManager gameManager;
     public AudioManager audioManager;
-    public GameObject golem;
     public Titania titania;
     void Start()
     {

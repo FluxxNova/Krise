@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Settings.unity
     guid: 20d734787bde4424685ccf945fcb3c0e
   - enabled: 1
-    path: Assets/Scenes/Delta Gameplay.unity
+    path: Assets/Scenes/Gameplay.unity
     guid: 2417fe32b7959ea46aee0284d65500c5
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
