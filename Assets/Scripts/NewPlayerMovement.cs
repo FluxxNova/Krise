@@ -61,8 +61,10 @@ public class NewPlayerMovement : MonoBehaviour
     public GameManager gameManager;
     public AudioManager audioManager;
     public Titania titania;
+    public Fatum fatum;
     void Start()
     {
+        fatum = FindObjectOfType<Fatum>();
         lifes = maxlifes;
         gameManager = FindObjectOfType<GameManager>();
         audioManager = GetComponentInChildren<AudioManager>();
@@ -243,6 +245,8 @@ public class NewPlayerMovement : MonoBehaviour
         lookDirection *= -1;
         isFacingLeft = !isFacingLeft;
     }
+
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -287,6 +291,7 @@ public class NewPlayerMovement : MonoBehaviour
         {
             titania.targetDetected = true;
         }
+
     }
     private void WallChecker()
     {
@@ -313,6 +318,13 @@ public class NewPlayerMovement : MonoBehaviour
             else mult *= -1;
 
             rayPos.y = mult * rayOffset;
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "FatumDetect")
+        {
+            fatum.Fire();
         }
     }
 }

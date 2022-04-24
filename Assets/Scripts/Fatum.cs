@@ -36,11 +36,14 @@ public class Fatum : MonoBehaviour
     private Renderer[] renderers;
     private MaterialPropertyBlock materialProperty;
     public GameObject bloodGO;
+    public GameObject fire;
+    public Animator animator;
 
     #endregion
 
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         //agent = GetComponent<NavMeshAgent>();
         //agent.speed = speed;
@@ -181,6 +184,18 @@ public class Fatum : MonoBehaviour
         {
             renderers[i].SetPropertyBlock(materialProperty);
         }
+    }
+
+    public void Fire()
+    {
+        StartCoroutine(ShotFire());
+    }
+
+    public IEnumerator ShotFire()
+    {
+        animator.SetTrigger("attack");
+        Instantiate(fire, this.transform.position + new Vector3(0, 5), Quaternion.Euler(0, -90, 0));
+        yield return new WaitForSeconds(5f);
     }
 
     private IEnumerator ColorAnimation()
