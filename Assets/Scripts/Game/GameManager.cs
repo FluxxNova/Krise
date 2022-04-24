@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
             paused = false;
             mixer.unpaused.TransitionTo(0);
             Time.timeScale = 1;
-            //Cursor.visible = false;
+            Cursor.visible = false;
         }
     }
 
