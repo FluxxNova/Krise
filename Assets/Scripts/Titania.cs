@@ -30,6 +30,7 @@ public class Titania : MonoBehaviour
     public GameObject limus;
     public GameObject golem;
     public float timeToSpawn;
+    public float spawnTime;
 
     #endregion
 
@@ -92,7 +93,7 @@ public class Titania : MonoBehaviour
     
     private IEnumerator SpawnEnemies()
     {
-        if (timeToSpawn >= 5f)
+        if (timeToSpawn >= spawnTime)
         {
             yield return new WaitForSeconds(2f);
             Instantiate(golem, this.transform.position + new Vector3(-3, 1), Quaternion.Euler(0, -90, 0));

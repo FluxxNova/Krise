@@ -66,6 +66,7 @@ public class NewPlayerMovement : MonoBehaviour
     void Start()
     {
         fatum = FindObjectOfType<Fatum>();
+        golem = FindObjectOfType<Enemy>();
         lifes = maxlifes;
         gameManager = FindObjectOfType<GameManager>();
         audioManager = GetComponentInChildren<AudioManager>();
@@ -183,7 +184,6 @@ public class NewPlayerMovement : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             enemy.transform.SendMessage("GetDamage");
-            Debug.Log("He Hiteao");
             audioManager.PlayClip(5);
         }
     }
@@ -327,7 +327,7 @@ public class NewPlayerMovement : MonoBehaviour
         {
             fatum.Fire();
         }
-        if (other.tag == "FatumDetect")
+        if (other.tag == "GolemDetect")
         {
             golem.Attack();
         }

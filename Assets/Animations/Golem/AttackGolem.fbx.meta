@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: 7516753020396857935
     second: Armature|Body_Retopo|Take 001|BaseLayer
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Orbe
+    second: {fileID: 2100000, guid: 6ef3d45328b3afc4880aece93adf4f28, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

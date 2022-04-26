@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1642303029183848172}
   m_Layer: 11
-  m_Name: GolemFinal
+  m_Name: GolemMalo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -36,19 +36,19 @@ public class Enemy : MonoBehaviour
     private Renderer[] renderers;
     private MaterialPropertyBlock materialProperty;
     public GameObject bloodGO;
-    private Animator animator;
+    public Animator animator;
 
     #endregion
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInParent<NavMeshAgent>();
         agent.speed = speed;
         gameManager = FindObjectOfType<GameManager>();
         SetIdle();
         renderers = GetComponentsInChildren<Renderer>();
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponentInParent<Animator>();
     }
     void Update()
     {
