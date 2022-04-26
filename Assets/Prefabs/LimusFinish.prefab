@@ -102,8 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   targetTransform: {fileID: 0}
-  speed: 3
-  life: 3
+  speed: 2
+  life: 2
   rb: {fileID: 0}
   nodes: []
   idleTime: 2
@@ -115,6 +115,7 @@ MonoBehaviour:
   targetDetected: 0
   gameManager: {fileID: 0}
   bloodGO: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!195 &1935984556850867044
 NavMeshAgent:
   m_ObjectHideFlags: 0

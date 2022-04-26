@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Player player;
+    public NewPlayerMovement player;
     public Mixer mixer;
     public GameObject charachter;
     public GameObject spawn;
