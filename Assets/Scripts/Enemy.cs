@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     #region Declaraciones
-    public enum EnemyState { Idle, Patrol, Chase}
+    public enum EnemyState { Idle, Patrol, Chase, Death}
     public EnemyState state;
     private NavMeshAgent agent;
     public Transform targetTransform;
@@ -38,6 +38,9 @@ public class Enemy : MonoBehaviour
     public GameObject bloodGO;
     public Animator animator;
 
+    [Header("DeathMaterial")]
+    public Material MuerteCuerpo;
+
     #endregion
 
     void Start()
@@ -49,6 +52,7 @@ public class Enemy : MonoBehaviour
         SetIdle();
         renderers = GetComponentsInChildren<Renderer>();
         animator = GetComponentInParent<Animator>();
+        
     }
     void Update()
     {
@@ -69,14 +73,21 @@ public class Enemy : MonoBehaviour
                     ChaseUpdate();
                     break;
                 }
+            case EnemyState.Death:
+                {
+                    Die();
+                    break;
+                }
         }
         if (targetDetected && state != EnemyState.Chase )
             SetChase();
+
 
     }
 
     private void FixedUpdate()
     {
+        
         if (targetDetected)
             return;
 
@@ -143,7 +154,6 @@ public class Enemy : MonoBehaviour
     #endregion
 
 
-    
     public void GetDamage()  // Muerte del enemigo
     {
         life--;
@@ -151,11 +161,18 @@ public class Enemy : MonoBehaviour
         Debug.Log("Ouch");
 
         if (life <= 0)
-            Destroy(gameObject);
-        StartCoroutine(ColorAnimation());
+            animator.SetTrigger("Death");
+        
         
     }
+    
+    public void Die()
+    {
 
+        gameObject.GetComponent<SkinnedMeshRenderer>().material = MuerteCuerpo;
+
+       
+    }
     private void ChangeColor(Color color)
     {
         materialProperty = new MaterialPropertyBlock();
