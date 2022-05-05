@@ -1,0 +1,3 @@
+[submodule "BryanRepo"]
+	path = BryanRepo
+	url = https://github.com/FluxxNova/BryanRepo.git
