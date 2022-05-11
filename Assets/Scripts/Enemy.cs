@@ -38,8 +38,7 @@ public class Enemy : MonoBehaviour
     public GameObject bloodGO;
     public Animator animator;
 
-    [Header("DeathMaterial")]
-    public Material MuerteCuerpo;
+    
 
     #endregion
 
@@ -164,13 +163,14 @@ public class Enemy : MonoBehaviour
             animator.SetTrigger("Death");
         
         
+        
     }
     
     public void Die()
     {
 
-        gameObject.GetComponent<SkinnedMeshRenderer>().material = MuerteCuerpo;
-
+        Destroy(gameObject);
+        Debug.Log("GolemMuere");
        
     }
     private void ChangeColor(Color color)
