@@ -327,10 +327,6 @@ public class NewPlayerMovement : MonoBehaviour
         {
             fatum.Fire();
         }
-        if (other.tag == "GolemDetect")
-        {
-            SendMessage("Attack");
-        }
     }
 }
 

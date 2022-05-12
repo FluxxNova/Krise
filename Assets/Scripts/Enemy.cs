@@ -195,6 +195,14 @@ public class Enemy : MonoBehaviour
         {
             GetDamage();
         }
+        
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Attack();
+        }
     }
     public void Attack()
     {
