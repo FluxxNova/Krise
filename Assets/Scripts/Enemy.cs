@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     private Renderer[] renderers;
     private MaterialPropertyBlock materialProperty;
     public GameObject bloodGO;
-    public Animator animator;
+    private Animator animator;
 
     
 
@@ -45,48 +45,18 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInParent<NavMeshAgent>();
         agent.speed = speed;
         gameManager = FindObjectOfType<GameManager>();
         SetIdle();
         renderers = GetComponentsInChildren<Renderer>();
-        animator = GetComponent<Animator>();
-        
+        animator = GetComponentInParent<Animator>();
     }
-    void Update()
-    {
-        switch (state)
-        {
-            case EnemyState.Idle:
-                {
-                    IdleUpdate();
-                    break;
-                }
-            case EnemyState.Patrol:
-                {
-                    PatrolUpdate();
-                    break;
-                }
-            case EnemyState.Chase:
-                {
-                    ChaseUpdate();
-                    break;
-                }
-            case EnemyState.Death:
-                {
-                    Die();
-                    break;
-                }
-        }
-        if (targetDetected && state != EnemyState.Chase )
-            SetChase();
 
-
-    }
 
     private void FixedUpdate()
     {
-        
+
         if (targetDetected)
             return;
 
@@ -160,7 +130,10 @@ public class Enemy : MonoBehaviour
         Debug.Log("Ouch");
 
         if (life <= 0)
-            animator.SetTrigger("Death");        
+            animator.SetTrigger("Death");
+        
+        
+        
     }
     
     public void Die()
@@ -194,14 +167,6 @@ public class Enemy : MonoBehaviour
         if (other.tag == "PlayerAttack")
         {
             GetDamage();
-        }
-        
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            Attack();
         }
     }
     public void Attack()
