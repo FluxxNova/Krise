@@ -329,7 +329,7 @@ public class NewPlayerMovement : MonoBehaviour
         }
         if (other.tag == "GolemDetect")
         {
-            golem.Attack();
+            SendMessage("Attack");
         }
     }
 }

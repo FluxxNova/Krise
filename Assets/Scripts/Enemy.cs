@@ -45,12 +45,12 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        agent = GetComponentInParent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         gameManager = FindObjectOfType<GameManager>();
         SetIdle();
         renderers = GetComponentsInChildren<Renderer>();
-        animator = GetComponentInParent<Animator>();
+        animator = GetComponent<Animator>();
         
     }
     void Update()
@@ -160,10 +160,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("Ouch");
 
         if (life <= 0)
-            animator.SetTrigger("Death");
-        
-        
-        
+            animator.SetTrigger("Death");        
     }
     
     public void Die()
