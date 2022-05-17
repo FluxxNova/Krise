@@ -80,7 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 2c217b4de9cac6346981f24715aafd3c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -108,7 +108,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Shape:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 2c217b4de9cac6346981f24715aafd3c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -152,14 +152,14 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Glow: 1
+    - _Glow: 0.35
     - _METALNESS: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueOffset: 0
-    - _R: 0.1
+    - _R: -0.74
     - _REFLECTIONS_IOR: 1.52
     - _REFLECTIONS_ROUGHNESS: 0
     - _REFLECTIONS_WEIGHT: 1
@@ -178,7 +178,7 @@ Material:
     - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
     - _BASE_COLOR: {r: 0.95193213, g: 0.8741656, b: 0, a: 1}
     - _BaseColor: {r: 0.4433962, g: 0.17332517, b: 0, a: 1}
-    - _Color: {r: 0.95193213, g: 0.8741656, b: 0, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _Direction: {r: 0, g: 0, b: 0, a: 0}
     - _DisintegrationColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 1, g: 1, b: 1, a: 1}

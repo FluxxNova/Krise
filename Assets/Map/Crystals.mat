@@ -23,7 +23,7 @@ Material:
   m_Name: Crystals
   m_Shader: {fileID: -6465566751694194690, guid: 90fdd1d8e0eb16e48843f130577882b0, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -113,6 +113,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_7db07b76689b4c69a4a0e174f506a239: 0
     - Boolean_f328948d1ebc4bca93e3430dcd22fc32: 0
     - Vector1_0302bacd7aaf40c4bfffe974adba1cbb: 0.82
     - Vector1_173a189694254be2a32f2364bc6e1c8e: 0
