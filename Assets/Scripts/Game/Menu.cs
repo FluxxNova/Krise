@@ -23,6 +23,11 @@ public class Menu : MonoBehaviour
     }
 
 
+    public void LoadNewGame()
+    {
+        PlayerPrefs.DeleteAll();
+        StartCoroutine(SceneLoadGameplay());
+    }
     public void LoadGameplayScene()
     {
         StartCoroutine(SceneLoadGameplay());
