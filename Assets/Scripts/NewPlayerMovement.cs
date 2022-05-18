@@ -21,6 +21,7 @@ public class NewPlayerMovement : MonoBehaviour
     public Image lifebar;
     public bool isDead;
     public bool checkpoint1 = false;
+    public int checkpont;
 
     [Header("Move Parameters")]
     public Vector2 inputVector;
@@ -65,6 +66,9 @@ public class NewPlayerMovement : MonoBehaviour
     public Enemy golem;
     void Start()
     {
+        controller.enabled = false;
+        Load();
+        Spawn();
         fatum = FindObjectOfType<Fatum>();
         golem = FindObjectOfType<Enemy>();
         lifes = maxlifes;
@@ -111,8 +115,6 @@ public class NewPlayerMovement : MonoBehaviour
         Vector2 horizontalVelocity = (transform.right * inputVector.x + transform.forward * inputVector.y) * speed;
 
         Vector2 compositeMovement = Vector2.zero;
-
-
 
         if (Moving == true)
         {
@@ -266,7 +268,31 @@ public class NewPlayerMovement : MonoBehaviour
             {
                 gameManager.Die();
             }
+        }
 
+        if (other.tag == "Checkpoint" && checkpont != 1)
+        {
+            audioManager.PlayClip(4);
+            checkpont = 1;
+            lifes = maxlifes;
+            lifebar.fillAmount = 1f;
+            Save();
+        }
+        if (other.tag == "Checkpoint2" && checkpont != 2)
+        {
+            audioManager.PlayClip(4);
+            checkpont = 2;
+            lifes = maxlifes;
+            lifebar.fillAmount = 1f;
+            Save();
+        }
+        if (other.tag == "Checkpoint3" && checkpont != 3)
+        {
+            audioManager.PlayClip(4);
+            checkpont = 3;
+            lifes = maxlifes;
+            lifebar.fillAmount = 1f;
+            Save();
         }
 
         if (other.tag == "Win")
@@ -325,8 +351,29 @@ public class NewPlayerMovement : MonoBehaviour
     {
         if (other.tag == "FatumDetect")
         {
-            fatum.Fire();
+            //fatum.Fire();
         }
+    }
+    public void Load()
+    {
+        checkpont = PlayerPrefs.GetInt("checkpont", checkpont);
+    }
+    public void Save()
+    {
+        PlayerPrefs.SetInt("checkpont", checkpont);
+    }
+
+    public void Spawn()
+    {
+        if (checkpont == 0)
+            this.transform.position = new Vector3(-135f, -75f, -6.5f);
+        if (checkpont == 1)
+            this.transform.position = new Vector3(-70f, -41f, -6.5f);
+        if (checkpont == 2)
+            this.transform.position = new Vector3(3f, -28f, -6.5f);
+        if (checkpont == 3)
+            this.transform.position = new Vector3(120f, 29f, -6.5f);
+        controller.enabled = true;
     }
 }
 

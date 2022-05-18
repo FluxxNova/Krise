@@ -8,11 +8,14 @@ public class HomingMissile : MonoBehaviour
     public Rigidbody2D rigidBody;
     public float angleChangingSpeed;
     public float movementSpeed;
-    public GameObject Player;
+    public NewPlayerMovement player;
+    private void Awake()
+    {
+        player = FindObjectOfType<NewPlayerMovement>();
+        target = player.transform;
+    }
     void start()
     {
-        GameObject Player = GameObject.FindWithTag("Player");
-        target = Player.transform;
     }
     void FixedUpdate()
     {

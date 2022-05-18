@@ -168,6 +168,10 @@ public class Enemy : MonoBehaviour
         {
             GetDamage();
         }
+        if (other.tag == "Player")
+        {
+            Attack();
+        }
     }
     public void Attack()
     {

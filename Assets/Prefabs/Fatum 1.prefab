@@ -5519,7 +5519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8485388072101178909}
   m_LocalRotation: {x: -0, y: 0.7071066, z: -0, w: -0.70710707}
-  m_LocalPosition: {x: 0.0021498, y: -50.79, z: -6.5}
+  m_LocalPosition: {x: 43.05735, y: -6.470108, z: -0.74}
   m_LocalScale: {x: 0.4514139, y: 0.4514139, z: 0.4514139}
   m_Children:
   - {fileID: 1773265258041020891}
@@ -5564,11 +5564,11 @@ MonoBehaviour:
   radiusChase: 10
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   targetDetected: 0
   gameManager: {fileID: 0}
   bloodGO: {fileID: 0}
-  fire: {fileID: 4326808242504143074, guid: 968b619737bafa84c9b48d28ebb3b89c, type: 3}
+  fire: {fileID: 9038187892264959433, guid: 3820fb2a9b3fdbc4dbc55996b3c51d5e, type: 3}
   animator: {fileID: 0}
 --- !u!1 &8723631241083707673
 GameObject:

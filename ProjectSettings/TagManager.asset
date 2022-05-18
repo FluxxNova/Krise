@@ -12,6 +12,8 @@ TagManager:
   - TargetDetect
   - FatumDetect
   - GolemDetect
+  - Checkpoint2
+  - Checkpoint3
   layers:
   - Default
   - TransparentFX

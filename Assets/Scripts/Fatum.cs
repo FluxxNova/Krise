@@ -88,6 +88,11 @@ public class Fatum : MonoBehaviour
             targetDetected = true;
             playerTransform = hits[0].transform;
         }
+        if (targetDetected)
+        {
+            StartCoroutine(ShotFire());
+            Debug.Log("elpepepepepe");
+        }
     }
 
     #region Sets 
@@ -193,9 +198,10 @@ public class Fatum : MonoBehaviour
 
     public IEnumerator ShotFire()
     {
+        yield return new WaitForSeconds(1f);
         animator.SetTrigger("attack");
         Instantiate(fire, this.transform.position + new Vector3(0, 5), Quaternion.Euler(0, -90, 0));
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
     }
 
     private IEnumerator ColorAnimation()
@@ -211,5 +217,6 @@ public class Fatum : MonoBehaviour
         {
             GetDamage();
         }
+
     }
 }
