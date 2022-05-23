@@ -73,7 +73,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 5b1555e7561011d4a873d36f5b110802, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EMISSION_COLOR_MAP:
@@ -85,7 +85,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FlowMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: fb79cba37c99fef45a528a10f14e88b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _METALNESS_MAP:
@@ -93,7 +93,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2c217b4de9cac6346981f24715aafd3c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 74e4916f0dd7f584b94aed89931112da, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -121,7 +121,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Shape:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cfc55c2590956d24ca26cd923083e5f1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -150,22 +150,22 @@ Material:
     - _BUMP_MAP_STRENGTH: 0.3
     - _Blend: 0
     - _BumpScale: 1
-    - _BumpStr: 1
+    - _BumpStr: 1.94
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveBorder: 0.05
+    - _DissolveBorder: 0.02
     - _DstBlend: 0
     - _EMISSION_WEIGHT: 1
     - _EnvironmentReflections: 1
-    - _Exapnd: 1
+    - _Exapnd: 3.27
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Glow: 1
+    - _Glow: 0.22
     - _METALNESS: 0
     - _Metallic: 0
     - _Mode: 0
@@ -184,17 +184,17 @@ Material:
     - _Surface: 0
     - _TRANSPARENCY: 0
     - _UVSec: 0
-    - _Weight: 0
+    - _Weight: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
     - _BASE_COLOR: {r: 0.023596281, g: 0.6698113, b: 0, a: 1}
     - _BaseColor: {r: 0, g: 0.16457057, b: 1, a: 1}
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
-    - _Direction: {r: 0, g: 0, b: 0, a: 0}
-    - _DisintegrationColor: {r: 1, g: 1, b: 1, a: 1}
-    - _DissolveColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Direction: {r: 0, g: 0, b: 0.6, a: 0}
+    - _DisintegrationColor: {r: 11.939906, g: 4.694322, b: 2.5512621, a: 1}
+    - _DissolveColor: {r: 0.4575472, g: 1, b: 0.6033962, a: 1}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _REFLECTIONS_COLOR: {r: 1, g: 1, b: 1, a: 1}
