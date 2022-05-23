@@ -58,10 +58,9 @@ public class GameManager : MonoBehaviour
 
     public void Die()
     {
+        int index = Random.Range(4, 7);
         Cursor.visible = true;
-        SceneManager.LoadScene("GameOver");
-        //SceneManager.LoadScene("GameOver", LoadSceneMode.Additive); //Sobreponer la escena de gameover encima del gameplay para luego quitarla
-        //player.isDead = true;
+        SceneManager.LoadScene(index);
     }
 
     public void Win()
