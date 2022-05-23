@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public GameObject spawn2;
     public GameObject pause;
     public GameObject settings;
+    public GameObject graphics;
+    public GameObject audio;
+    public GameObject controls;
     public GameObject hud;
     public bool paused = false;
     NewPlayerMovement newPlayer;
@@ -78,6 +81,27 @@ public class GameManager : MonoBehaviour
     {
         settings.SetActive(false);
         pause.SetActive(true);
+    }
+
+    public void AudioButton()
+    {
+        audio.SetActive(true);
+        graphics.SetActive(false);
+        controls.SetActive(false);
+    }
+        
+    public void ControlsButton()
+    {
+        audio.SetActive(false);
+        graphics.SetActive(false);
+        controls.SetActive(true);
+    }
+        
+    public void GraphicsButton()
+    {
+        audio.SetActive(false);
+        graphics.SetActive(true);
+        controls.SetActive(false);
     }
 
 }
