@@ -130,10 +130,13 @@ public class Enemy : MonoBehaviour
         Debug.Log("Ouch");
 
         if (life <= 0)
-            animator.SetTrigger("Death");
-        
-        
-        
+        {
+            //animator.SetTrigger("Death");
+            Destroy(gameObject);
+        }
+
+
+
     }
     
     public void Die()

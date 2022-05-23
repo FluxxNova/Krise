@@ -56,6 +56,8 @@ public class NewPlayerMovement : MonoBehaviour
     [Header("Attack Parameters")]
     public GameObject attack;
     public float attackRange;
+    public float timeToAttack;
+    public float attackCoolDown;
 
     [Header("Controller declaration")]
     public GodMode godMode;
@@ -109,6 +111,7 @@ public class NewPlayerMovement : MonoBehaviour
         WallChecker();
         currentTime += Time.deltaTime;
         damageTime += Time.deltaTime;
+        attackCoolDown += Time.deltaTime;
         //isGrounded = Physics.CheckSphere(transform.position, 0.2f, groundMask);
         controller.transform.position = new Vector3(transform.position.x, transform.position.y, -6.5f);
 
@@ -179,17 +182,26 @@ public class NewPlayerMovement : MonoBehaviour
     }
     void OnAttack(InputAction.CallbackContext isAttacking)
     {
-
-        Collider[] hitEnemies = Physics.OverlapSphere(attack.transform.position, attackRange, enemyLayer);
-        audioManager.PlayClip(3);
-        animator.SetTrigger("Attack");
-        foreach (Collider enemy in hitEnemies)
-        {
-            enemy.transform.SendMessage("GetDamage");
-            audioManager.PlayClip(5);
-        }
+        StartCoroutine(Attack());
     }
 
+    public IEnumerator Attack()
+    {
+        if (attackCoolDown > timeToAttack)
+        {
+            animator.SetTrigger("Attack");
+            attackCoolDown = 0;
+            yield return new WaitForSeconds(0.3f);
+            Collider[] hitEnemies = Physics.OverlapSphere(attack.transform.position, attackRange, enemyLayer);
+            audioManager.PlayClip(3);
+            foreach (Collider enemy in hitEnemies)
+            {
+                enemy.transform.SendMessage("GetDamage");
+                audioManager.PlayClip(5);
+            }
+            attackCoolDown = 0;
+        }
+    }
 
     void OnJump(InputAction.CallbackContext isJumping)
     {
