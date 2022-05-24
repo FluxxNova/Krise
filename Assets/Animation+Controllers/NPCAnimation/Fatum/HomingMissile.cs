@@ -5,10 +5,11 @@ using UnityEngine;
 public class HomingMissile : MonoBehaviour
 {
     public Transform target;
-    public Rigidbody2D rigidBody;
+    public Rigidbody rigidBody;
     public float angleChangingSpeed;
     public float movementSpeed;
     public NewPlayerMovement player;
+    public Vector3 TurnMultiplier;
     private void Awake()
     {
         player = FindObjectOfType<NewPlayerMovement>();
@@ -19,10 +20,12 @@ public class HomingMissile : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector2 direction = (Vector2)target.position - rigidBody.position;
+        Vector3 direction = (Vector3)target.position - rigidBody.position;
         direction.Normalize();
         float rotateAmount = Vector3.Cross(direction, transform.up).z;
-        rigidBody.angularVelocity = -angleChangingSpeed * rotateAmount;
+        TurnMultiplier.z = -angleChangingSpeed * rotateAmount;
+
+        rigidBody.angularVelocity = TurnMultiplier;
         rigidBody.velocity = transform.up * movementSpeed;
     }
 }

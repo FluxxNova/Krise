@@ -84,7 +84,6 @@ MonoBehaviour:
   targetDetected: 0
   gameManager: {fileID: 0}
   bloodGO: {fileID: 0}
-  animator: {fileID: 0}
 --- !u!195 &4673421365168311437
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -204,6 +203,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 810271261977846866, guid: f65476304d802924390673fcf9b60648, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 823ca34245e845b4981508a1a8d7a1bb, type: 2}
+    - target: {fileID: 810271261977846866, guid: f65476304d802924390673fcf9b60648, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9ae025709d5cd12449fd4cafcbce9627, type: 2}
+    - target: {fileID: 810271261977846866, guid: f65476304d802924390673fcf9b60648, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 67e98cfeea17a60498017f577df6e612, type: 2}
+    - target: {fileID: 810271261977846866, guid: f65476304d802924390673fcf9b60648, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f291281617570545acc222be2a1f75a, type: 2}
+    - target: {fileID: 810271261977846866, guid: f65476304d802924390673fcf9b60648, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: a087acac782d2fc41b9c106774a203f1, type: 2}
+    - target: {fileID: 810271261977846866, guid: f65476304d802924390673fcf9b60648, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: cc5782f83c411634893a69111a16eba9, type: 2}
+    - target: {fileID: 810271261977846866, guid: f65476304d802924390673fcf9b60648, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 474aa0f7575365d47b970359872e305c, type: 2}
+    - target: {fileID: 810271261977846866, guid: f65476304d802924390673fcf9b60648, type: 3}
+      propertyPath: m_Materials.Array.data[7]
+      value: 
+      objectReference: {fileID: 2100000, guid: b81efdb93036e6342bc32fbecfe6dcf0, type: 2}
     - target: {fileID: 919132149155446097, guid: f65476304d802924390673fcf9b60648, type: 3}
       propertyPath: m_Name
       value: BaseStateGolem
