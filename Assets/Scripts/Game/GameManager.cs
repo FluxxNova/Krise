@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour
     public GameObject controls;
     public GameObject hud;
     public bool paused = false;
+    int index;
     NewPlayerMovement newPlayer;
     // Start is called before the first frame update
     void Start()
     {
+        index = Random.Range(4, 7);
         //Object.DontDestroyOnLoad(this.gameObject);        
     }
 
@@ -58,7 +60,6 @@ public class GameManager : MonoBehaviour
 
     public void Die()
     {
-        int index = Random.Range(4, 7);
         Cursor.visible = true;
         SceneManager.LoadScene(index);
     }
