@@ -21,18 +21,21 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cara
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5c156b2e74a676b46a1851c1bd33b1ec, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_48cd2d9be0434d77ba2006952ae728d3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -90,6 +93,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_0bc3d4f9a86541dab26ee2b71048d816: 0
+    - Vector1_4356fd6381be4eca9b7ef28f63bba213: 30
+    - Vector1_7df8988f8d8a4540b77ccfdbbc6a5b34: -1
+    - Vector1_881703470b28476c863559410658d467: 0
+    - Vector1_beaaefd7eb3c41ca892f97d6b0d44e12: 0
+    - Vector1_d01aeaa26cf94c7a97fcb8e6ac5dedbc: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -117,6 +126,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_21868679933a456d83b620c71c10c052: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     public bool targetDetected;
     private Transform playerTransform;
     private Collider[] hits = new Collider[10];
+    public NewPlayerMovement player;
 
     [Space]
     public GameManager gameManager;
@@ -51,6 +52,7 @@ public class Enemy : MonoBehaviour
         SetIdle();
         renderers = GetComponentsInChildren<Renderer>();
         animator = GetComponentInParent<Animator>();
+        player = FindObjectOfType<NewPlayerMovement>();
     }
 
 
@@ -65,8 +67,38 @@ public class Enemy : MonoBehaviour
         if (collisions > 0)
         {
             targetDetected = true;
-            playerTransform = hits[0].transform;
+            playerTransform = player.transform;
         }
+    }
+    void Update()
+    {
+        switch (state)
+        {
+            case EnemyState.Idle:
+                {
+                    IdleUpdate();
+                    break;
+                }
+            case EnemyState.Patrol:
+                {
+                    PatrolUpdate();
+                    break;
+                }
+            case EnemyState.Chase:
+                {
+                    ChaseUpdate();
+                    break;
+                }
+            case EnemyState.Death:
+                {
+                    Die();
+                    break;
+                }
+        }
+        if (targetDetected && state != EnemyState.Chase)
+            SetChase();
+
+
     }
 
     #region Sets 
@@ -84,7 +116,7 @@ public class Enemy : MonoBehaviour
         state = EnemyState.Chase;
         agent.isStopped = false;
         radius = radiusChase;
-        targetTransform = playerTransform;
+        targetTransform = player.transform;
     }
     #endregion
 
@@ -131,8 +163,11 @@ public class Enemy : MonoBehaviour
 
         if (life <= 0)
         {
-            //animator.SetTrigger("Death");
-            Destroy(gameObject);
+            animator.SetBool("Dead",true);
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                Destroy(gameObject);
+            }
         }
 
 

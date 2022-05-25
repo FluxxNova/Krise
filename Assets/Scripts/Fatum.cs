@@ -37,6 +37,7 @@ public class Fatum : MonoBehaviour
     private MaterialPropertyBlock materialProperty;
     public GameObject bloodGO;
     public GameObject fire;
+    public float fireSpawn = 0;
     public Animator animator;
 
     #endregion
@@ -200,7 +201,7 @@ public class Fatum : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         animator.SetTrigger("attack");
-        Instantiate(fire, this.transform.position + new Vector3(0, 5), Quaternion.Euler(0, -90, 0));
+        Instantiate(fire, this.transform.position + new Vector3(0, fireSpawn), Quaternion.Euler(0, -90, 0));
         yield return new WaitForSeconds(2f);
     }
 
