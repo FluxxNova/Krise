@@ -14,6 +14,8 @@ TagManager:
   - GolemDetect
   - Checkpoint2
   - Checkpoint3
+  - Cam
+  - Cam2
   layers:
   - Default
   - TransparentFX
