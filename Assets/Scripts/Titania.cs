@@ -115,7 +115,6 @@ public class Titania : MonoBehaviour
     {
 
         targetDetected = true;
-        Debug.Log("eleelle");
         targetDetected = false;
     }
 

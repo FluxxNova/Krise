@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class NewPlayerMovement : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class NewPlayerMovement : MonoBehaviour
     public Titania titania;
     public Fatum fatum;
     public Enemy golem;
+    public CinemachineVirtualCamera vCam;
     void Start()
     {
         controller.enabled = false;
@@ -280,6 +282,14 @@ public class NewPlayerMovement : MonoBehaviour
             {
                 gameManager.Die();
             }
+        }
+        if (other.tag == "Cam")
+        {
+            vCam.Priority = 11;
+        }
+        if (other.tag == "Cam2")
+        {
+            vCam.Priority = 9;
         }
 
         if (other.tag == "Checkpoint" && checkpont != 1)
