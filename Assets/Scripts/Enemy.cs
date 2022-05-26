@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     private MaterialPropertyBlock materialProperty;
     public GameObject bloodGO;
     private Animator animator;
+    private Collider collider;
 
     
 
@@ -53,6 +54,7 @@ public class Enemy : MonoBehaviour
         renderers = GetComponentsInChildren<Renderer>();
         animator = GetComponentInParent<Animator>();
         player = FindObjectOfType<NewPlayerMovement>();
+        collider = GetComponentInChildren<Collider>();
     }
 
 
@@ -91,7 +93,7 @@ public class Enemy : MonoBehaviour
                 }
             case EnemyState.Death:
                 {
-                    Die();
+                    //Die();
                     break;
                 }
         }
@@ -163,24 +165,21 @@ public class Enemy : MonoBehaviour
 
         if (life <= 0)
         {
-            animator.SetBool("Dead",true);
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-            {
-                Destroy(gameObject);
-            }
+            StartCoroutine(startDie());
         }
 
 
 
     }
-    
-    public void Die()
+    private IEnumerator startDie()
     {
-
+        foreach (Collider c in GetComponentsInChildren<Collider>())
+            c.enabled = false;
+        animator.SetBool("Dead", true);
+        yield return new WaitForSeconds(2.6f);
         Destroy(gameObject);
-        Debug.Log("GolemMuere");
-       
     }
+    
     private void ChangeColor(Color color)
     {
         materialProperty = new MaterialPropertyBlock();
