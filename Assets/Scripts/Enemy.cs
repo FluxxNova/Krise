@@ -168,9 +168,6 @@ public class Enemy : MonoBehaviour
             agent.speed = 0;
             StartCoroutine(startDie());
         }
-
-
-
     }
     private IEnumerator startDie()
     {
