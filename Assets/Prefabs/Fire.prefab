@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8299062732552014943}
   - component: {fileID: 6886113903961553310}
   - component: {fileID: 1924041454230795903}
-  - component: {fileID: 7557396925132660157}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7557396925132660157
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5090462799042515040}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9038187892264959433
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,11 +91,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7349374700017615888}
   - component: {fileID: 2636650487456115232}
-  - component: {fileID: 5675635941946328852}
-  - component: {fileID: 9002076738707960920}
+  - component: {fileID: -7019648421613834555}
+  - component: {fileID: 8407240643206462238}
   m_Layer: 0
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,44 +128,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  rigidBody: {fileID: 866723784726267536, guid: 968b619737bafa84c9b48d28ebb3b89c, type: 3}
+  rigidBody: {fileID: 8407240643206462238}
   angleChangingSpeed: 150
-  movementSpeed: 20
+  movementSpeed: 5
   player: {fileID: 0}
---- !u!50 &5675635941946328852
-Rigidbody2D:
-  serializedVersion: 4
+  TurnMultiplier: {x: 0, y: 0, z: 0}
+--- !u!135 &-7019648421613834555
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9038187892264959433}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &9002076738707960920
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9038187892264959433}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0001
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8407240643206462238
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9038187892264959433}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
