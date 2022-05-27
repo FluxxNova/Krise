@@ -68,6 +68,7 @@ public class NewPlayerMovement : MonoBehaviour
     public Fatum fatum;
     public Enemy golem;
     public CinemachineVirtualCamera vCam;
+    public CinemachineVirtualCamera mainCamera;
     void Start()
     {
         controller.enabled = false;

@@ -160,11 +160,12 @@ public class Enemy : MonoBehaviour
     public void GetDamage()  // Muerte del enemigo
     {
         life--;
-
+        StartCoroutine(ColorAnimation());
         Debug.Log("Ouch");
 
         if (life <= 0)
         {
+            agent.speed = 0;
             StartCoroutine(startDie());
         }
 
@@ -195,6 +196,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator ColorAnimation()
     {
         ChangeColor(Color.red);
+        Debug.Log("pepega");
         yield return new WaitForSeconds(0.5f);
         ChangeColor(Color.white);
     }
