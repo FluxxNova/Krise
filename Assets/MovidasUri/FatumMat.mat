@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FatumMat
-  m_Shader: {fileID: -6465566751694194690, guid: 90fdd1d8e0eb16e48843f130577882b0, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5c156b2e74a676b46a1851c1bd33b1ec, type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -22,6 +22,10 @@ Material:
     m_TexEnvs:
     - Texture2D_41271c3c5f484ca2a435c65087a81705:
         m_Texture: {fileID: 2800000, guid: 7d7bb0ae4ceb63d47baebc65a1240709, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_48cd2d9be0434d77ba2006952ae728d3:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_537445ec1155499ca2912e3066a054b7:
@@ -157,12 +161,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_0bc3d4f9a86541dab26ee2b71048d816: 1
     - Boolean_7db07b76689b4c69a4a0e174f506a239: 0
     - Boolean_f328948d1ebc4bca93e3430dcd22fc32: 0
     - Vector1_0302bacd7aaf40c4bfffe974adba1cbb: 0
     - Vector1_173a189694254be2a32f2364bc6e1c8e: 0
+    - Vector1_4356fd6381be4eca9b7ef28f63bba213: 30
+    - Vector1_7df8988f8d8a4540b77ccfdbbc6a5b34: -1
+    - Vector1_881703470b28476c863559410658d467: 6.32
     - Vector1_ad6169196f75454084baa654abbb0f31: 11.1
+    - Vector1_beaaefd7eb3c41ca892f97d6b0d44e12: -59.57
     - Vector1_c7479863103b4f29a9aef386345a0896: 0
+    - Vector1_d01aeaa26cf94c7a97fcb8e6ac5dedbc: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -190,6 +200,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
+    - Color_21868679933a456d83b620c71c10c052: {r: 0, g: 0.9381461, b: 1, a: 0}
     - Color_e1a8962107a449d8a95615423b61ff7a: {r: 0, g: 0, b: 0, a: 0}
     - Color_f80e4706a7d94114b8ec23b83ee5cf77: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
