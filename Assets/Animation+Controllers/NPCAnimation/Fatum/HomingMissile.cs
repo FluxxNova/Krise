@@ -28,4 +28,15 @@ public class HomingMissile : MonoBehaviour
         rigidBody.angularVelocity = TurnMultiplier;
         rigidBody.velocity = transform.up * movementSpeed;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "ground")
+        {
+            Destroy(gameObject);
+        }
+        if (other.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

@@ -16,6 +16,8 @@ TagManager:
   - Checkpoint3
   - Cam
   - Cam2
+  - titaniaDetect
+  - ground
   layers:
   - Default
   - TransparentFX

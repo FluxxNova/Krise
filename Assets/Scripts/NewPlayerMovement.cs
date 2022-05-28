@@ -76,6 +76,7 @@ public class NewPlayerMovement : MonoBehaviour
         Spawn();
         fatum = FindObjectOfType<Fatum>();
         golem = FindObjectOfType<Enemy>();
+        titania = FindObjectOfType<Titania>();
         lifes = maxlifes;
         gameManager = FindObjectOfType<GameManager>();
         audioManager = GetComponentInChildren<AudioManager>();
@@ -339,7 +340,7 @@ public class NewPlayerMovement : MonoBehaviour
 
         if (other.tag == "TargetDetect")
         {
-            titania.targetDetected = true;
+            //titania.targetDetected = true;
         }
 
     }
@@ -375,6 +376,10 @@ public class NewPlayerMovement : MonoBehaviour
         if (other.tag == "FatumDetect")
         {
             //fatum.Fire();
+        }
+        if (other.tag == "titaniaDetect")
+        {
+            //titania.targetDetected = true;
         }
     }
     public void Load()

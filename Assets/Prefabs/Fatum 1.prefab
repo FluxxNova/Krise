@@ -794,6 +794,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   bloodGO: {fileID: 0}
   fire: {fileID: 9038187892264959433, guid: 3820fb2a9b3fdbc4dbc55996b3c51d5e, type: 3}
+  fireSpawn: 5
   animator: {fileID: 0}
 --- !u!1 &8723631241083707673
 GameObject:
