@@ -33,9 +33,9 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - GroundTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: 12c8d1ba210bbf94bafa9b316ef4c360, type: 3}
+        m_Scale: {x: 2.2, y: 2.05}
+        m_Offset: {x: 1.84, y: 5.94}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: e11ac89f317c4774fa58685fe5ccfad0, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -69,45 +69,45 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - AlphaCutoff: 0.5
-    - Ang: 1
-    - Base: 1
-    - DoublePlaned: 0
-    - Height: 0.31
-    - Speed: 0
-    - _AlphaClip: 0
+    - AlphaCutoff: 0.88
+    - Ang: 2.03
+    - Base: 1.79
+    - DoublePlaned: 1
+    - Height: 1.58
+    - Speed: 1.07
+    - _AlphaClip: 1.55
     - _Blend: 0
     - _BumpScale: 1
-    - _Cull: 2
+    - _Cull: 3.13
     - _Cutoff: 0.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _LightAffectance: 0.05
+    - _LightAffectance: 0.33
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
-    - _ReceiveShadows: 1.02
-    - _ShadowAffectance: 0.2
-    - _Smoothness: 0
+    - _ReceiveShadows: -1.15
+    - _ShadowAffectance: -0.47
+    - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 1.66
     - _Surface: 0
     - _TessellationUniform: 1
-    - _TranslucencyFactor: 0.05
+    - _TranslucencyFactor: 0.94
     - _VertexColorTesselation: 0
-    - _WindStrength: 0.2
+    - _WindStrength: 0.18
     - _WorkflowMode: 1
-    - _ZWrite: 1
+    - _ZWrite: 0.96
     m_Colors:
-    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 0.9960785, g: 0.023529414, b: 0.027450982, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Darker: {r: 0.21670103, g: 0.2830189, b: 0.21493416, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Vect: {r: 0.3392119, g: 0.5471698, b: 0.24003202, a: 1}
+    - _Vect: {r: 0, g: 0, b: 0, a: 1}
     - _WindFrequency: {r: 0.05, g: 0.05, b: 0, a: 0}
   m_BuildTextureStacks: []
