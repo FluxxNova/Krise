@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Titania : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class Titania : MonoBehaviour
     public int attackNum = 1;
     public GameObject fire;
     public float fireSpawn;
+    public Image lifebar;
+    private Collider coll;
 
 
     #endregion
@@ -52,6 +55,7 @@ public class Titania : MonoBehaviour
         renderers = GetComponentsInChildren<Renderer>();
         player = FindObjectOfType<NewPlayerMovement>();
         target = player.transform;
+        coll = GetComponent<Collider>();
     }
 
     private void FixedUpdate()
@@ -100,7 +104,7 @@ public class Titania : MonoBehaviour
     public void GetDamage()  // Muerte del enemigo
     {
         life--;
-
+        lifebar.fillAmount -= 0.02f;
         Debug.Log("Ouch");
 
         if (life <= 0)
@@ -114,7 +118,8 @@ public class Titania : MonoBehaviour
     }
     private IEnumerator Attack()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        coll.enabled = false;
         Debug.Log("elpepe");
         agent.speed = 150f;
         agent.SetDestination(target.position);
@@ -124,6 +129,7 @@ public class Titania : MonoBehaviour
         agent.speed = 0.1f;
         timeToAttack = 0;
         attackNum = 2;
+        coll.enabled = true;
         yield return new WaitForSeconds(2f);
     }
     public IEnumerator ShotFire()

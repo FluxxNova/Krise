@@ -69,6 +69,7 @@ public class NewPlayerMovement : MonoBehaviour
     public Enemy golem;
     public CinemachineVirtualCamera vCam;
     public CinemachineVirtualCamera mainCamera;
+    public GameObject titaniaLifebar;
     void Start()
     {
         controller.enabled = false;
@@ -288,6 +289,7 @@ public class NewPlayerMovement : MonoBehaviour
         if (other.tag == "Cam")
         {
             vCam.Priority = 11;
+            titaniaLifebar.SetActive(true);
         }
         if (other.tag == "Cam2")
         {
