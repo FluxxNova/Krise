@@ -41,6 +41,7 @@ public class Titania : MonoBehaviour
     public GameObject fire;
     public float fireSpawn;
     public Image lifebar;
+    private Collider[] colliders;
     private Collider coll;
 
 
@@ -56,6 +57,7 @@ public class Titania : MonoBehaviour
         player = FindObjectOfType<NewPlayerMovement>();
         target = player.transform;
         coll = GetComponent<Collider>();
+        colliders = GetComponentsInChildren<Collider>();
     }
 
     private void FixedUpdate()
@@ -108,8 +110,14 @@ public class Titania : MonoBehaviour
         Debug.Log("Ouch");
 
         if (life <= 0)
-            gameManager.Win();     
-        
+        {
+            agent.isStopped = true;
+            agent.speed = 0;
+            agent.angularSpeed = 0;
+            attackTime = 200;
+            animator.SetTrigger("Die");
+            coll.enabled = false;
+        }
         if (life == 25)
         {
             animator.SetBool("Spawn", true);
@@ -167,5 +175,9 @@ public class Titania : MonoBehaviour
         }
         //targetDetected = false;
     }
-
+    public void Death()
+    {
+        Destroy(gameObject);
+        gameManager.Win();
+    }
 }

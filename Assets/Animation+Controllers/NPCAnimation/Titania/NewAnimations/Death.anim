@@ -9463,7 +9463,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -9472,8 +9472,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -9500,7 +9500,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -9509,8 +9509,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -9537,7 +9537,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -9546,8 +9546,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -9574,7 +9574,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -9583,8 +9583,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -9611,7 +9611,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -9620,8 +9620,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -9648,7 +9648,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -9657,8 +9657,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -9670,6 +9670,43 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: material.Vector1_7df8988f8d8a4540b77ccfdbbc6a5b34
     path: TitaniaRig:SkinGroup/TitaniaRig:Hip_Armor
+    classID: 137
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2.2083333
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 4.2083335
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: material.Vector1_7df8988f8d8a4540b77ccfdbbc6a5b34
+    path: TitaniaRig:Staff
     classID: 137
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -10179,6 +10216,13 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 5861681
+      attribute: 2370961093
+      script: {fileID: 0}
+      typeID: 137
+      customType: 22
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 228291857
       attribute: 2370961093
       script: {fileID: 0}
       typeID: 137
@@ -12192,7 +12236,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 4.1250005
+    m_StopTime: 4.2083335
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -47056,7 +47100,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -47065,8 +47109,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -47093,7 +47137,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -47102,8 +47146,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -47130,7 +47174,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -47139,8 +47183,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -47167,7 +47211,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -47176,8 +47220,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -47204,7 +47248,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -47213,8 +47257,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -47241,7 +47285,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.625
+        time: 2.2083333
         value: -1
         inSlope: 0
         outSlope: 0
@@ -47250,8 +47294,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.125
-        value: -0.34
+        time: 4.2083335
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -47263,6 +47307,43 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: material.Vector1_7df8988f8d8a4540b77ccfdbbc6a5b34
     path: TitaniaRig:SkinGroup/TitaniaRig:Hip_Armor
+    classID: 137
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2.2083333
+        value: -1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 4.2083335
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: material.Vector1_7df8988f8d8a4540b77ccfdbbc6a5b34
+    path: TitaniaRig:Staff
     classID: 137
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -58737,4 +58818,11 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 3.9583333
+    functionName: Death
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
