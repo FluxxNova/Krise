@@ -147,7 +147,7 @@ public class NewPlayerMovement : MonoBehaviour
         if (currentTime >= dashTime)
         {
             dashMovement.x = 0f;
-            speed = 13;
+            speed = 9;
             dash = false;
         }
 
