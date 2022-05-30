@@ -31,7 +31,7 @@ public class NewPlayerMovement : MonoBehaviour
     public float dashForce;
     Vector2 dashMovement;
     Vector2 horizontalInput;
-    Vector2 verticalVelocity = Vector2.zero;
+    public Vector2 verticalVelocity = Vector2.zero;
     [SerializeField] float gravity = -20f; // -9.81
     protected float rayDistance = 1f;
     protected float rayOffset = 0.5f;
@@ -70,6 +70,7 @@ public class NewPlayerMovement : MonoBehaviour
     public CinemachineVirtualCamera vCam;
     public CinemachineVirtualCamera mainCamera;
     public GameObject titaniaLifebar;
+    public bool jumped;
     void Start()
     {
         controller.enabled = false;
@@ -153,17 +154,23 @@ public class NewPlayerMovement : MonoBehaviour
 
         if (wallTouched)
         {
+            animator.SetBool("CanClimb", true);
             verticalVelocity = (transform.up * inputVector.y + transform.forward * inputVector.y) * speed;
+            if (verticalVelocity.y != 0)
+                animator.SetBool("IsClimbing", true);
+            else
+                animator.SetBool("IsClimbing", false);
         }
         else
         {
+            animator.SetBool("CanClimb", false);
             verticalVelocity.y += gravity * Time.deltaTime;
             if (verticalVelocity.y < terminalVerticalVelocity)
             {
                 verticalVelocity.y = terminalVerticalVelocity;
             }
+                animator.SetBool("IsClimbing", false);
         }
-
 
         if (fly)
         {
@@ -210,13 +217,17 @@ public class NewPlayerMovement : MonoBehaviour
 
     void OnJump(InputAction.CallbackContext isJumping)
     {
+        jumped = false;
         jump = true;
+        verticalVelocity.y = jumpForce;
         if (jump && controller.isGrounded)
         {
+            animator.SetTrigger("Jump");
             audioManager.PlayClip(2);
             //verticalVelocity.y = Mathf.Sqrt(-2f * jumpForce * gravity);
-            verticalVelocity.y = jumpForce;
+            //verticalVelocity.y = jumpForce;
             jump = false;
+            jumped = true;
         }
     }
     public void OnPause(InputAction.CallbackContext obj)
